@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title data-translate-key="loginTitle">Giriş Yap</title>
+    <link rel="stylesheet" href="/css/stylegeneral.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <header>
+        <div class="left">
+            <h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1>
+        </div>
+        <div class="right">
+            <div id="language-switcher">
+                <button id="lang-tr">TR</button>
+                <button id="lang-en">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-content"> 
+            <h1 data-translate-key="loginTitle">Giriş Yap</h1>
+            <form id="login-form" novalidate>
+                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required><br>
+                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required><br>
+                <button type="submit" data-translate-key="loginButton">Giriş Yap</button>
+            </form>
+        </div>
+        <p class="switch-auth-link">
+            <span data-translate-key="noAccount">Hesabın yok mu?</span> 
+            <a href="register.html" data-translate-key="registerLink">Kayıt ol</a>
+        </p>
+    </div>
+
+    <script src="/scripts/translations.js"></script>
+    <script src="/scripts/language.js"></script>
+    <script src="/scripts/login.js"></script>
+    <footer>
+        <p data-translate-key="copyrightNotice">© 2025 Dijital Müze. Her Hakkı Saklıdır.</p>
+    </footer>
+</body>
+</html>

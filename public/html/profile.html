@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title data-translate-key="profileTitle">Profilim</title>
+    <link rel="stylesheet" href="/css/stylegeneral.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <header>
+        <div class="left">
+            <h1 id="header-username"></h1>
+        </div>
+        <div class="center">
+            <nav>
+                <a href="/index.html" class="nav-link" data-translate-key="navMuseums">Müzeler</a>
+            </nav>
+        </div>
+        <div class="right">
+            <div id="language-switcher">
+                <button id="lang-tr">TR</button>
+                <button id="lang-en">EN</button>
+            </div>
+            <a class="logout-button" href="#" id="logout-button" data-translate-key="logoutButton">Çıkış Yap</a>
+        </div>
+    </header>
+    <main>
+        <section class="user-section">
+            <div id="username-greeting"></div>
+            <button id="editButton" data-translate-key="editButton">Düzenle</button>
+        </section>
+        <section>
+            <h2 data-translate-key="visitedTitle">Ziyaret Ettiğim Müzeler</h2>
+            <ul id="visited"></ul>
+        </section>
+        <section>
+            <h2 data-translate-key="wishlistTitle">Ziyaret Etmek İstediğim Müzeler</h2>
+            <ul id="wishlist"></ul>
+        </section>
+    </main>
+    <script src="/scripts/translations.js"></script>
+    <script src="/scripts/language.js"></script>
+    <script src="/scripts/profile.js"></script>
+        <footer>
+        <p data-translate-key="copyrightNotice">© 2025 Dijital Müze. Her Hakkı Saklıdır.</p>
+    </footer>
+</body>
+</html>
