@@ -119,55 +119,67 @@ app.get('/index.html', requireLogin, (req, res) => {
 app.post('/api/register', async (req, res) => {
     const { username, email, password } = req.body;
     try {
+        // 1. Alanların doluluğunu kontrol et
+        if (!username || !email || !password) {
+            return res.status(400).send('Lütfen tüm alanları doldurun.');
+        }
 
-        // --- VALIDATION (KONTROL) KURALLARI ---
-
-        // 1. Username Uzunluk Kontrolü
-        if (!username || username.length < 3 || username.length > 16) {
+        // 2. Username Uzunluk ve Karakter Kontrolü
+        if (username.length < 3 || username.length > 16) {
             return res.status(400).send('Kullanıcı adı 3 ila 16 karakter arasında olmalıdır.');
         }
-        // 2. Username Karakter Kontrolü (Sadece İngilizce harfler)
         const usernameRegex = /^[a-zA-Z]+$/;
         if (!usernameRegex.test(username)) {
             return res.status(400).send('Kullanıcı adı sadece İngilizce harfler içerebilir.');
         }
-        // 3. Şifre Uzunluk Kontrolü
-        if (!password || password.length < 8) {
+
+        // 3. Email Format Kontrolü (Yeni eklendi)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).send('Geçersiz e-posta formatı.');
+        }
+
+        // 4. Şifre Uzunluk ve Karmaşıklık Kontrolü
+        if (password.length < 8) {
             return res.status(400).send('Şifre en az 8 karakter uzunluğunda olmalıdır.');
         }
-        // 4. Şifre Karmaşıklık Kontrolü
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
         if (!passwordRegex.test(password)) {
             return res.status(400).send('Şifre en az bir büyük harf, bir küçük harf, bir rakam ve bir sembol içermelidir.');
         }
-        // 5. Kullanıcı Adı Mevcut mu?
-        const existing = await User.findOne({ username });
-        if (existing) {
+
+        // 5. Çakışma Kontrolü (Username ve Email aynı anda kontrol ediliyor)
+        const existingUsername = await User.findOne({ username });
+        if (existingUsername) {
             return res.status(409).send('Bu kullanıcı adı zaten var.');
         }
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) return res.status(400).json({ message: "Bu mail zaten kayıtlı!" });
+        const existingEmail = await User.findOne({ email });
+        if (existingEmail) {
+            return res.status(409).send('Bu e-posta adresi zaten kayıtlı.');
+        }
 
-        const newUser = new User({ 
+        // 6. Tek Bir Kullanıcı Kaydı Oluşturma
+        const user = new User({ 
             username, 
             email, 
-            password,
+            password, 
             visitedMuseums: [], 
             wishlist: [] 
         });
 
-        await newUser.save();
-        res.status(201).json({ message: "Kayıt başarılı!" });
-        // --- Kullanıcı Kaydı ---
-        const user = new User({ username, password });
         await user.save();
+
+        // 7. Oturumu Başlat ve Yanıt Gönder
         req.session.userId = user._id;
-        res.status(200).send('Kayıt başarılı!');
+        // Not: Sadece bir kez yanıt gönderiyoruz
+        return res.status(201).send('Kayıt başarılı!');
 
     } catch (error) {
         console.error("Register Error:", error);
-        res.status(500).send("Sunucuda bir hata oluştu.");
+        if (!res.headersSent) {
+            res.status(500).send("Sunucuda bir hata oluştu.");
+        }
     }
 });
 
