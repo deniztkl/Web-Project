@@ -7,16 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = "";
 
             museums.forEach(museum => {
-                const name = museum[`name_${lang}`] || museum.name;
-                const desc = museum[`description_${lang}`] || museum.description;
+                const lang = window.currentLang || 'tr'; 
+                
+                const name = museum[`name_${lang}`] || museum.name || "";
+                const desc = museum[`description_${lang}`] || museum.description || "";
+                
                 const card = document.createElement("a");
                 card.className = "museum-card";
                 card.href = `html/template.html?id=${museum.id}`;
                 
                 card.innerHTML = `
-                    <img src="${museum.imageUrl}" alt="${museum.name}">
-                    <h3>${museum.name}</h3>
-                    <p>${museum.description.length > 120 ? museum.description.substring(0, 120) + "..." : museum.description}</p>
+                    <img src="${museum.imageUrl}" alt="${name}">
+                    <h3>${name}</h3>
+                    <p>${desc.length > 120 ? desc.substring(0, 120) + "..." : desc}</p>
                 `;
                 container.appendChild(card);
             });

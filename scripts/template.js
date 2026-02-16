@@ -15,27 +15,33 @@ function renderPage(museum, user) {
     currentUser = user; 
 
     const lang = window.currentLang;
+    // Dile göre doğru verileri seçiyoruz
+    const museumName = museum[`name_${lang}`] || museum.name;
+    const museumDesc = museum[`description_${lang}`] || museum.description || ""; // undefined gelirse boş string döner
+
     const container = document.getElementById('museum-detail-container');
     container.innerHTML = '';
-    document.title = museum.name;
+    document.title = museumName;
 
     const isVisited = user.visitedMuseums.includes(museum.id);
     const isInWishlist = user.wishlist.includes(museum.id);
 
     const museumHTML = `
         <div class="banner">
-            <img src="${museum.imageUrl}" alt="${museum.name}">
-            <div class="banner-text"><h1>${museum.name}</h1></div>
+            <img src="${museum.imageUrl}" alt="${museumName}">
+            <div class="banner-text"><h1>${museumName}</h1></div>
         </div>
         <main>
             <div class="description-section">
                 <u><h2 class="desc-title" data-translate-key="descriptionTitle">${translations[lang].descriptionTitle}</h2></u>
-                <article class="museum-description"><p>${museum.description.replace(/\n/g, '<br>')}</p></article>
+                <article class="museum-description">
+                    <p>${museumDesc.replace(/\n/g, '<br>')}</p>
+                </article>
             </div>
             <div class="map-container">
                 <iframe id="museum-map" 
                     src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
             <div class="action-buttons">
