@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- GİRİŞ İŞLEMLERİ ---
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
@@ -7,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             const currentLang = window.currentLang || 'tr';
 
-            // --- YENİ EKLENEN BOŞ ALAN KONTROLÜ ---
             if (!username || !password) {
                 alert(translations[currentLang].validation.fieldRequired);
                 return;
@@ -30,12 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- SLIDESHOW İŞLEMLERİ ---
+    initSlideshow();
 });
 
 async function initSlideshow() {
     const imgElement = document.getElementById('slideshow-img');
     const titleElement = document.getElementById('slideshow-title');
     
+    if (!imgElement) return;
+
     try {
         const response = await fetch('/api/museum');
         const museums = await response.json();
@@ -52,19 +57,18 @@ async function initSlideshow() {
             setTimeout(() => {
                 imgElement.src = museum.image;
                 titleElement.innerText = museum.name; 
-                imgElement.style.opacity = 1;
+                imgElement.onload = () => {
+                    imgElement.style.opacity = 1;
+                };
             }, 1000);
 
             currentIndex = (currentIndex + 1) % museums.length;
         }
 
         updateSlide(); 
-        setInterval(updateSlide, 3500);
+        setInterval(updateSlide, 5000);
 
     } catch (err) {
         console.error("Slideshow yüklenemedi:", err);
     }
 }
-
-
-document.addEventListener('DOMContentLoaded', initSlideshow);

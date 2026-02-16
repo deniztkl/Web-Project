@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/stylegeneral.css">
     <link rel="stylesheet" href="/css/auth.css">
 </head>
-<body>
+<body class="auth-body">
     <header>
         <div class="left">
             <h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1>
@@ -19,21 +19,21 @@
         </div>
     </header>
 
-<div class="auth-container">
-    <div class="auth-wrapper"> <div class="auth-content"> 
+    <div class="auth-wrapper">
+        <div class="auth-content">
             <h1 data-translate-key="loginTitle">Giriş Yap</h1>
-            <form id="login-form" novalidate>
-                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required><br>
-                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required><br>
-                <button type="submit" data-translate-key="loginButton">Giriş Yap</button>
+            <form id="login-form">
+                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required>
+                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required>
+                <button type="submit" data-translate-key="loginButton">GİRİŞ YAP</button>
             </form>
             <div class="switch-auth-link">
                 <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
+                <p>
+                    <span data-translate-key="noAccount">Hesabın yok mu?</span> 
+                    <a href="register.html" data-translate-key="registerLink">Kayıt Ol</a>
+                </p>
             </div>
-            <p class="switch-auth-link">
-                <span data-translate-key="noAccount">Hesabın yok mu?</span> 
-                <a href="register.html" data-translate-key="registerLink">Kayıt ol</a>
-            </p>
         </div>
 
         <div class="auth-slideshow" id="slideshow-container">
@@ -43,15 +43,14 @@
                 <h3 id="slideshow-title"></h3>
             </div>
         </div>
-
     </div>
-</div>
+
+    <footer>
+        <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
+    </footer>
 
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/language.js"></script>
     <script src="/scripts/login.js"></script>
-    <footer>
-        <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
-    </footer>
 </body>
 </html>
