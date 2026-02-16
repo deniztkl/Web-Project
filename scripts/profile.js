@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderPage = () => {
         if (!userData || !museums) return;
-        const lang = window.currentLang;
-
+        const lang = window.currentLang || 'tr';
         editButton.textContent = isEditing ? translations[lang].saveButton : translations[lang].editButton;
         usernameGreeting.innerText = translations[lang].welcomeMessage + userData.username;
         headerUsername.innerText = userData.username; 
@@ -42,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const museum = getMuseumById(id);
         if (!museum) return '';
         
-        const lang = window.currentLang;
+        const lang = window.currentLang || 'tr';
+        const museumName = museum[`name_${lang}`] || museum.name;
+        
         let buttonsHTML = '';
         if (isEditing) {
             buttonsHTML = `
@@ -60,14 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
             <li>
                 <a href="./template.html?id=${museum.id}" class="list-item-link" style="background-image: url(${museum.imageUrl})">
-                    ${museum.name}
+                    ${museumName} 
                 </a>
                 ${buttonsHTML}
             </li>
         `;
     };
     
-    // --- API Fonksiyonları (İÇLERİ DOLDURULDU) ---
+    // --- API Fonksiyonları ---
     const refreshUserData = async () => {
         const res = await fetch("/api/user", fetchOptions);
         if (res.ok) {
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- Olay Dinleyicileri ve Sayfa Başlatma ---
+    // --- Olay Dinleyicileri ---
     document.querySelector('main').addEventListener('click', (e) => {
         if (e.target.matches('.move-btn')) {
             const { id, from, to } = e.target.dataset;
@@ -133,8 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const initializePage = async () => {
         try {
             const [userRes, museumsRes] = await Promise.all([
-                fetch("/api/user", fetchOptions), fetch("/api/museum", fetchOptions)
+                fetch("/api/user", fetchOptions), 
+                fetch("/api/museum", fetchOptions) 
             ]);
+            
             if (!userRes.ok || !museumsRes.ok) throw new Error("Veri alınamadı");
             
             userData = await userRes.json();
@@ -142,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderPage();
         } catch (error) {
             console.error("Veri alınırken kritik bir hata oluştu:", error);
-            window.location.href = "/html/login.html";
         }
     };
 

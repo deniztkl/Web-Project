@@ -5,6 +5,10 @@
     <title data-translate-key="profileTitle">Profilim</title>
     <link rel="stylesheet" href="/css/stylegeneral.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+RO:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -17,7 +21,7 @@
             </nav>
         </div>
         <div class="right">
-            <div id="language-switcher">
+             <div id="language-switcher">
                 <button id="lang-tr">TR</button>
                 <button id="lang-en">EN</button>
             </div>
@@ -29,19 +33,23 @@
             <div id="username-greeting"></div>
             <button id="editButton" data-translate-key="editButton">Düzenle</button>
         </section>
+        
         <section>
             <h2 data-translate-key="visitedTitle">Ziyaret Ettiğim Müzeler</h2>
-            <ul id="visited"></ul>
+            <ul id="visited" class="museum-list"></ul>
         </section>
+        
         <section>
             <h2 data-translate-key="wishlistTitle">Ziyaret Etmek İstediğim Müzeler</h2>
-            <ul id="wishlist"></ul>
+            <ul id="wishlist" class="museum-list"></ul>
         </section>
     </main>
+
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/language.js"></script>
     <script src="/scripts/profile.js"></script>
-        <footer>
+    
+    <footer>
         <p data-translate-key="copyrightNotice">© 2025 Dijital Müze. Her Hakkı Saklıdır.</p>
     </footer>
 </body>
