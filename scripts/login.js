@@ -31,3 +31,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+async function initSlideshow() {
+    const imgElement = document.getElementById('slideshow-img');
+    const titleElement = document.getElementById('slideshow-title');
+    
+    try {
+        const response = await fetch('/api/museum');
+        const museums = await response.json();
+        
+        if (!museums || museums.length === 0) return;
+
+        let currentIndex = 0;
+
+        function updateSlide() {
+            const museum = museums[currentIndex];
+            
+            imgElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                imgElement.src = museum.image;
+                titleElement.innerText = museum.name; 
+                imgElement.style.opacity = 1;
+            }, 1000);
+
+            currentIndex = (currentIndex + 1) % museums.length;
+        }
+
+        updateSlide(); 
+        setInterval(updateSlide, 3500);
+
+    } catch (err) {
+        console.error("Slideshow yüklenemedi:", err);
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', initSlideshow);

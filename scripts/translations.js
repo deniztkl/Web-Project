@@ -7,7 +7,7 @@ const translations = {
     "profileLink": "My Profile",
     "mainTitle": "Museums of Istanbul",
     "generalError": "An error occurred. Please try again.",
-    "copyrightNotice": "© 2026 Dijital Müzeler. All Rights Reserved.",
+    "copyrightNotice": "© 2025 Dijital Müzeler. All Rights Reserved.",
     
     // Login & Register
     "loginTitle": "Login",
@@ -88,7 +88,7 @@ const translations = {
     "profileLink": "Profilim",
     "mainTitle": "İstanbul Müzeleri",
     "generalError": "Bir hata oluştu. Lütfen tekrar deneyin.",
-    "copyrightNotice": "© 2026 Dijital Müzeler. Tüm Hakları Saklıdır.",
+    "copyrightNotice": "© 2025 Dijital Müzeler. Tüm Hakları Saklıdır.",
     
     // Login & Register
     "loginTitle": "Giriş Yap",

@@ -19,8 +19,8 @@
         </div>
     </header>
 
-    <div class="auth-container">
-        <div class="auth-content"> 
+<div class="auth-container">
+    <div class="auth-wrapper"> <div class="auth-content"> 
             <h1 data-translate-key="loginTitle">Giriş Yap</h1>
             <form id="login-form" novalidate>
                 <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required><br>
@@ -28,14 +28,24 @@
                 <button type="submit" data-translate-key="loginButton">Giriş Yap</button>
             </form>
             <div class="switch-auth-link">
-            <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
+                <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
+            </div>
+            <p class="switch-auth-link">
+                <span data-translate-key="noAccount">Hesabın yok mu?</span> 
+                <a href="register.html" data-translate-key="registerLink">Kayıt ol</a>
+            </p>
+        </div>
+
+        <div class="auth-slideshow" id="slideshow-container">
+            <div class="slideshow-overlay"></div>
+            <img id="slideshow-img" src="" alt="Museum">
+            <div class="slideshow-text">
+                <h3 id="slideshow-title"></h3>
             </div>
         </div>
-        <p class="switch-auth-link">
-            <span data-translate-key="noAccount">Hesabın yok mu?</span> 
-            <a href="register.html" data-translate-key="registerLink">Kayıt ol</a>
-        </p>
+
     </div>
+</div>
 
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/language.js"></script>
