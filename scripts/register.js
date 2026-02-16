@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('register-form');
     const usernameInput = document.getElementById('username');
-    const emailInput = document.getElementById('email');
+    const email = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const messageContainer = document.getElementById('message-container');
     const validationRulesContainer = document.querySelector('.validation-rules');
