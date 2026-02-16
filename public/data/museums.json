@@ -1,158 +1,146 @@
 [
   {
     "id": "ayasofya",
-    "name": "Ayasofya",
-    "description": "Ayasofya, İstanbul'un en ikonik yapılarından biridir ve Bizans ile Osmanlı dönemlerinin mimari ve kültürel izlerini taşır. 537 yılında Bizans İmparatoru I. Justinianus tarafından kilise olarak inşa edilmiştir. 1453'te İstanbul'un fethiyle camiye dönüştürülmüş ve 1935 yılında müze olarak halka açılmıştır. 2020 yılında yeniden cami statüsüne kavuşmuştur.\n\nMimari açıdan, Ayasofya'nın devasa kubbesi ve iç mekânındaki mozaikler dikkat çekicidir. Kubbe, dönemin mühendislik harikası olarak kabul edilir ve yapının içindeki akustiğiyle de ünlüdür. Mozaikler, hem Hristiyan hem de İslam sanatının örneklerini barındırır.\n\nAyasofya'nın iç mekânı, tarih boyunca farklı dönemlerde eklenen sanat eserleriyle zenginleşmiştir. Bizans dönemine ait mozaikler, Osmanlı döneminde eklenen hat sanatı örnekleriyle birlikte ziyaretçilere sunulmaktadır. Bu birleşim, yapının kültürel çeşitliliğini yansıtır.\n\nZiyaretçiler, Ayasofya'nın tarihini ve mimarisini keşfederken, aynı zamanda İstanbul'un tarihsel dönüşümüne tanıklık ederler. Yapı, hem dini hem de kültürel bir merkez olarak önemini korumaktadır.\n\nAyasofya, UNESCO Dünya Mirası Listesi'nde yer almakta olup, her yıl milyonlarca turist tarafından ziyaret edilmektedir. Bu eşsiz yapı, İstanbul'un tarihini ve kültürünü anlamak isteyenler için vazgeçilmez bir duraktır.",
+    "name_tr": "Ayasofya",
+    "name_en": "Hagia Sophia",
+    "description_tr": "Ayasofya, İstanbul'un en ikonik yapılarından biridir ve Bizans ile Osmanlı dönemlerinin mimari ve kültürel izlerini taşır. 537 yılında Bizans İmparatoru I. Justinianus tarafından kilise olarak inşa edilmiştir. 1453'te İstanbul'un fethiyle camiye dönüştürülmüş ve 1935 yılında müze olarak halka açılmıştır. 2020 yılında yeniden cami statüsüne kavuşmuştur.\n\nMimari açıdan, Ayasofya'nın devasa kubbesi ve iç mekânındaki mozaikler dikkat çekicidir. Kubbe, dönemin mühendislik harikası olarak kabul edilir ve yapının içindeki akustiğiyle de ünlüdür.",
+    "description_en": "Hagia Sophia is one of Istanbul's most iconic structures, carrying architectural and cultural traces of both Byzantine and Ottoman eras. Built as a church in 537 by Byzantine Emperor Justinian I, it was converted into a mosque with the conquest of Istanbul in 1453 and opened as a museum in 1935. In 2020, it regained its status as a mosque.\n\nArchitecturally, Hagia Sophia's massive dome and interior mosaics are remarkable. The dome is considered an engineering marvel of its time and is famous for its interior acoustics.",
     "imageUrl": "/Images/ayasofya.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.98048613300751,
-        41.00872870100649
-      ]
+      "coordinates": [28.98048613300751, 41.00872870100649]
     }
   },
   {
     "id": "Istanbul-Arkeoloji-Muzeleri",
-    "name": "İstanbul Arkeoloji Müzeleri",
-    "description": "İstanbul Arkeoloji Müzeleri üç ana birimden oluşan bir müzeler kompleksidir. Arkeoloji Müzesi, Eski Şark Eserleri Müzesi ve Çinili Köşk Müzesi. Türkiye’nin ilk müzesi olan İstanbul Arkeoloji Müzeleri’nin koleksiyonlarında imparatorluk topraklarından getirilen, çeşitli kültürlere ait bir milyona yakın eser bulunmaktadır.\n\nOsmanlı’da tarihi eser toplama merakının izleri Fatih Sultan Mehmet dönemine kadar uzanır ancak müzeciliğin kurumsal olarak ortaya çıkışı İstanbul Arkeoloji Müzeleri’nin 1869 yılında ‘Müze-i Hümayun’ yani İmparatorluk Müzesi olarak kuruluşuna denk gelir. Aya İrini Kilisesi’nde o güne değin toplanmış arkeolojik eserlerden oluşan Müze-I Humayun, İstanbul Arkeoloji Müzeleri’nin temelini oluşturur. Aya İrini’nin yetersiz kalması ile Fatih Sultan Mehmet döneminde yaptırılmış olan ‘Çinili Köşk’ müzeye dönüştürülmüştür. Halen İstanbul Arkeoloji Müzeleri’ne bağlı olan Çinili Köşk restore edilerek 1880 yılında ziyarete açılır.\n\n1881 yılında Osman Hamdi Bey’in müze müdürlüğüne atanması ile birlikte Türk müzeciliğinde yeni bir çığır açılır. Osman Hamdi Bey Nemrud Dağı, Myrina, Kyme ve diğer Aiolis Bölgesi Kentleri Nekropollerinde ve Lagina Hekate Tapınağı'nda kazılar yapmış, 1887-1888 yılları arasında Sayda'da (Sidon) yaptığı kazılar sonucunda Sidon Kral Nekropolü'ne ulaşmış ve dünyaca ünlü İskender Lahdi başta olmak üzere pek çok lahit ile İstanbul'a dönmüştür.\n\nİstanbul Arkeoloji Müzeleri kompleksi içerisinde en eski yapı (Miladi 1472) Çinili Köşk'tür. Şu anda Türk çini ve seramik örneklerinin sergilendiği Çinili Köşk Müzesi, İstanbul'daki Osmanlı dönemi sivil mimari örneklerinin en eskilerindendir.\n\nEski Şark Eserleri Müzesi olarak kullanılan bina, Osman Hamdi Bey tarafından 1883 yılında Sanayi-i Nefise Mektebi yani Güzel Sanatlar Akademisi olarak inşa ettirilmiştir. Binanın mimarı daha sonra İstanbul Arkeoloji Müzeleri Klasik binasını inşa edecek olan Alexander Vallaury'dir. 1917 yılında akademinin Cağaloğlu'na taşınması üzerine bu bina müzeler müdürlüğüne tahsis edilmiştir.\n\nArkeoloji Müzesi ise dönemi için, dünyada müze binası olarak inşa edilmiş ender yapılardan biri olma özelliği ile göze çarpar. İstanbul'daki Neo-Klasik mimarinin en güzel ve görkemli örneklerinden biridir. Alınlık üzerinde bulunan Osmanlıca yazıda 'Asar-ı Atika Müzesi' (Eski Eserler Müzesi) yazmaktadır. Yazının üzerinde bulunan tuğra, Sultan Il. Abdülhamid' e aittir.\n\n1887 ve 1888 yılları arasında Osman Hamdi Bey tarafından yapılan Sidon Kral Nekropolü Kazısı'ndan İstanbul'a getirilen, aralarında İskender Lahdı, Ağlayan Kadınlar Lahdi, Likya Lahdi, Tabnit Lahdi gibi ihtişamlı eserlerin sergilenebilmesi için yeni bir müze binasına ihtiyaç duyulmuş, Çinili Köşk'ün karşısına dönemin ünlü mimarı Alexander Vallaury tarafından inşa edilen İstanbul Arkeoloji Müzeleri klasik bina 13 Haziran 1891'de ziyarete açılmıştır.\n\nİstanbul Arkeoloji Müzeleri Müdürlüğü binalarındaki alt katta yer alan, 1, 16, 17, 18, 19, 20 numaralı salonlar ve üst kattaki salonların tamamının; Ek Bina zemin katta 'Assos Sergi Salonu' ve 'İstanbul'un Çevre Kültürleri: Trakya, Bithynia - Bizans' sergi salonları ziyarete kapalıdır.",
+    "name_tr": "İstanbul Arkeoloji Müzeleri",
+    "name_en": "Istanbul Archaeology Museums",
+    "description_tr": "Türkiye’nin ilk müzesi olan İstanbul Arkeoloji Müzeleri, Arkeoloji Müzesi, Eski Şark Eserleri Müzesi ve Çinili Köşk Müzesi olmak üzere üç ana birimden oluşur. Koleksiyonunda imparatorluk topraklarından getirilen bir milyona yakın eser bulunmaktadır.\n\nOsman Hamdi Bey'in 1881'de müze müdürlüğüne atanmasıyla Türk müzeciliğinde yeni bir devir açılmıştır. Müze, İskender Lahdi gibi dünyaca ünlü eserlere ev sahipliği yapar.",
+    "description_en": "Istanbul Archaeology Museums, the first museum of Turkey, consists of three main units: the Archaeology Museum, the Museum of the Ancient Orient, and the Tiled Kiosk Museum. The collection houses nearly one million artifacts from the imperial territories.\n\nA new era in Turkish museology began when Osman Hamdi Bey was appointed as museum director in 1881. The museum hosts world-renowned works such as the Alexander Sarcophagus.",
     "imageUrl": "/Images/arkeoloji.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.98139134323812,
-        41.011984405349814
-      ]
+      "coordinates": [28.98139134323812, 41.011984405349814]
     }
   },
   {
     "id": "Topkapi-Sarayi",
-    "name": "Topkapı Sarayı",
-    "description": "Topkapı Sarayı, İstanbul’un tarihi yarımadasında, Marmara Denizi, İstanbul Boğazı ve Haliç’e hakim bir konumda yer alan Osmanlı saraylarından biridir. 1478 yılında Fatih Sultan Mehmet tarafından yaptırılan bu saray, yaklaşık 400 yıl boyunca Osmanlı padişahlarının resmi ikametgahı ve yönetim merkezi olarak kullanılmıştır. Ayasofya’ya komşu olan saray, hem siyasi hem de kültürel anlamda imparatorluğun kalbi olmuştur.\n\nSaray, klasik Osmanlı mimarisinin en önemli örneklerinden biridir. İç içe geçmiş dört büyük avluya ve çeşitli köşk, oda, hazine ve haremlik gibi bölümlere sahiptir. Her bir avlu, sarayda bulunan kişilerin rütbesine ve görevine göre düzenlenmiştir. En dıştaki avlu halka açıkken, iç kısımlara doğru gidildikçe erişim sadece saray mensuplarına özel hale gelir. Bu yapısıyla Topkapı Sarayı hem bir yaşam alanı hem de bir yönetim merkezi olma görevini bir arada yürütmüştür.\n\nTopkapı Sarayı, yalnızca padişahların yaşadığı bir yer değil, aynı zamanda devletin idari işlerinin yürütüldüğü bir merkezdi. Divan-ı Hümayun toplantıları burada yapılır, önemli devlet kararları alınırdı. Ayrıca Enderun Mektebi aracılığıyla devlet adamları ve yüksek rütbeli bürokratlar burada eğitilirdi. Bu yönüyle saray, Osmanlı’nın idari, siyasi ve eğitim sistemlerinin de merkezinde yer almıştır.\n\nSarayı benzersiz kılan unsurlardan biri de Harem Dairesi’dir. Harem, padişahın ailesi ve cariyelerinin yaşadığı özel bölümdür ve çok katı kurallara tabidir. Harem, hem sarayın en gizemli kısmıdır hem de saray içindeki sosyal yapının ve hiyerarşinin en karmaşık örneğidir. Valide Sultan, Hasekiler, cariyeler ve hadımlar gibi birçok farklı görevde kişi burada yaşardı. Her biri belli bir düzene ve protokole göre saray hayatına katılırdı.\n\nGünümüzde Topkapı Sarayı, bir müze olarak hizmet vermektedir ve her yıl milyonlarca yerli ve yabancı turist tarafından ziyaret edilmektedir. Sarayın en ilgi çekici bölümleri arasında Kutsal Emanetler Dairesi, Padişah Elbiseleri Koleksiyonu, Osmanlı Hazinesi ve ünlü Topkapı Hançeri gibi paha biçilemez eserlerin sergilendiği bölümler yer alır. Topkapı Sarayı, hem tarih meraklıları hem de kültürel mirasa ilgi duyanlar için eşsiz bir ziyaret noktasıdır.",
+    "name_tr": "Topkapı Sarayı",
+    "name_en": "Topkapi Palace",
+    "description_tr": "1478 yılında Fatih Sultan Mehmet tarafından yaptırılan Topkapı Sarayı, yaklaşık 400 yıl boyunca Osmanlı padişahlarının resmi ikametgahı ve yönetim merkezi olmuştur. Saray; Hazine, Kutsal Emanetler ve Harem gibi bölümleriyle Osmanlı'nın görkemini yansıtır.",
+    "description_en": "Built by Fatih Sultan Mehmet in 1478, Topkapi Palace served as the official residence and administrative center of the Ottoman Sultans for nearly 400 years. The palace reflects the glory of the Ottoman Empire with sections like the Treasury, Sacred Relics, and the Harem.",
     "imageUrl": "/Images/topkapi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.98334669396138,
-        41.011665120650996
-      ]
+      "coordinates": [28.98334669396138, 41.011665120650996]
     }
   },
   {
     "id": "Galata-Kulesi",
-    "name": "Galata Kulesi Müzesi",
-    "description": "Galata Kulesi, İstanbul'un Beyoğlu ilçesinde yer alan ve şehrin siluetine damgasını vuran tarihi bir yapıdır. 14. yüzyılda Cenevizliler tarafından inşa edilen kule, zamanla farklı amaçlarla kullanılmıştır. Günümüzde ise müze olarak hizmet vermektedir.\n\nKule, İstanbul'un panoramik manzarasını izlemek isteyen ziyaretçiler için popüler bir noktadır. Seyir terasından, Boğaziçi, Haliç ve tarihi yarımada gibi şehrin önemli bölgeleri görülebilir. Bu özelliğiyle, hem yerli hem de yabancı turistlerin ilgisini çeker.\n\nMüze içerisinde, Galata Kulesi'nin tarihini anlatan sergiler ve interaktif paneller bulunmaktadır. Ayrıca, kuledeki restorasyon çalışmaları ve geçmişteki kullanımları hakkında bilgi veren bölümler de mevcuttur. Ziyaretçiler, kulenin tarihine dair detaylı bilgiler edinebilir.\n\nKulenin alt katında yer alan kafe ve hediyelik eşya dükkanı, ziyaretçilere dinlenme ve alışveriş imkanı sunar. Ayrıca, kulede zaman zaman düzenlenen kültürel etkinlikler ve sergiler de ziyaretçilerin ilgisini çeker. Bu etkinlikler, kulenin kültürel bir merkez haline gelmesini sağlar.\n\nGalata Kulesi Müzesi, tarihi yapısı, eşsiz manzarası ve zengin içerikleriyle İstanbul'un en önemli turistik noktalarından biridir. Ziyaretçiler, burada hem şehrin tarihine tanıklık eder hem de unutulmaz anılar biriktirir.",
+    "name_tr": "Galata Kulesi Müzesi",
+    "name_en": "Galata Tower Museum",
+    "description_tr": "14. yüzyılda Cenevizliler tarafından inşa edilen Galata Kulesi, İstanbul siluetinin en tanınmış simgelerinden biridir. Günümüzde müze olarak hizmet veren kule, ziyaretçilerine 360 derecelik panoramik bir İstanbul manzarası sunmaktadır.",
+    "description_en": "Built by the Genoese in the 14th century, Galata Tower is one of the most recognized symbols of the Istanbul skyline. Currently serving as a museum, the tower offers its visitors a 360-degree panoramic view of Istanbul.",
     "imageUrl": "/Images/galata-kulesi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.97418340098899,
-        41.02569571438074
-      ]
+      "coordinates": [28.97418340098899, 41.02569571438074]
     }
   },
   {
     "id": "Istanbul-Modern",
-    "name": "İstanbul Modern Sanat Müzesi",
-    "description": "İstanbul Modern Sanat Müzesi, Türkiye'nin modern ve çağdaş sanat alanındaki ilk müzesi olarak 2004 yılında kurulmuştur. Müze, Karaköy'de, Boğaz kıyısında yer almakta olup, ulusal ve uluslararası sanatçıların eserlerini sergilemektedir. Müze binası, ünlü mimar Renzo Piano tarafından tasarlanmıştır.\n\nMüzenin koleksiyonunda, resim, heykel, fotoğraf ve video gibi çeşitli sanat dallarından eserler bulunmaktadır. Ayrıca, geçici sergiler ve sanatçı söyleşileriyle de sanatseverlere geniş bir perspektif sunar. Müze, genç sanatçıların eserlerine de yer vererek, çağdaş sanatın gelişimine katkı sağlar.\n\nEğitim programları ve atölye çalışmalarıyla da dikkat çeken İstanbul Modern, çocuklar ve gençler için özel etkinlikler düzenler. Bu programlar, sanatın farklı yönlerini keşfetmek isteyenler için fırsatlar sunar. Ayrıca, müze kütüphanesi ve sinema salonu da ziyaretçilere hizmet vermektedir.\n\nMüze, Boğaz manzaralı kafe ve restoranıyla da ziyaretçilere keyifli bir deneyim sunar. Sanatla iç içe bir atmosferde, lezzetli yemekler ve içecekler eşliğinde dinlenme imkanı sağlar. Ayrıca, müze mağazasında sanat temalı hediyelik eşyalar ve kitaplar bulunur.\n\nİstanbul Modern Sanat Müzesi, çağdaş sanatın nabzını tutan etkinlikleri ve zengin koleksiyonuyla, İstanbul'un kültürel yaşamında önemli bir yere sahiptir. Sanatseverler için vazgeçilmez bir durak olan müze, her yaştan ziyaretçiye hitap eder.",
+    "name_tr": "İstanbul Modern Sanat Müzesi",
+    "name_en": "Istanbul Modern Art Museum",
+    "description_tr": "Türkiye'nin modern ve çağdaş sanat alanındaki ilk müzesi olarak 2004 yılında kurulmuştur. Karaköy'deki yeni binasında, ulusal ve uluslararası sanatçıların eserlerini sergileyerek çağdaş sanatın gelişimine katkı sağlar.",
+    "description_en": "Founded in 2004 as Turkey's first museum of modern and contemporary art. In its new building in Karaköy, it contributes to the development of contemporary art by exhibiting works by national and international artists.",
     "imageUrl": "/Images/istanbul-modern.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.98309577250708,
-        41.02612184643056
-      ]
+      "coordinates": [28.98309577250708, 41.02612184643056]
     }
   },
   {
     "id": "Rahmi-Koc-Muzesi",
-    "name": "Rahmi M. Koç Müzesi",
-    "description": "Rahmi M. Koç Müzesi, İstanbul'un Hasköy semtinde yer alan ve sanayi, ulaşım, iletişim ve endüstri tarihine odaklanan bir müzedir. 1994 yılında açılan müze, tarihi Haliç Tersanesi'nde konumlanmıştır. Ziyaretçilere, buhar makineleri, eski otomobiller, trenler, deniz araçları ve uçaklar gibi birçok farklı alanda sergilenen objelerle interaktif bir deneyim sunar. Ayrıca, çocuklar için özel etkinlikler ve atölyeler düzenlenmektedir. Müze, Türkiye'nin endüstriyel mirasını koruma ve tanıtma misyonunu başarıyla sürdürmektedir.",
+    "name_tr": "Rahmi M. Koç Müzesi",
+    "name_en": "Rahmi M. Koc Museum",
+    "description_tr": "Haliç kıyısındaki tarihi tersane binalarında yer alan müze, sanayi, ulaşım ve endüstri tarihine adanmıştır. Eski otomobillerden denizaltılara kadar geniş bir koleksiyon sunar.",
+    "description_en": "Located in historic shipyard buildings on the shores of the Golden Horn, the museum is dedicated to the history of industry, transport, and communication. It offers a wide collection from vintage cars to submarines.",
     "imageUrl": "/Images/koc_muzesi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.94910131029281,
-        41.04198394340297
-      ]
+      "coordinates": [28.94910131029281, 41.04198394340297]
     }
   },
   {
     "id": "Sakip-Sabanci-Muzesi",
-    "name": "Sakıp Sabancı Müzesi",
-    "description": "Sakıp Sabancı Müzesi, İstanbul'un Emirgan semtinde, Boğaz manzaralı tarihi bir köşkte yer almaktadır. 2002 yılında açılan müze, Osmanlı dönemi hat sanatı, resim ve mobilya koleksiyonlarıyla tanınır. Ayrıca, Picasso, Rodin ve Rembrandt gibi dünyaca ünlü sanatçıların eserlerinin sergilendiği geçici sergilere ev sahipliği yapmıştır. Müze, eğitim programları, seminerler ve atölye çalışmalarıyla sanatseverlere geniş bir yelpazede etkinlikler sunar. Bahçesinde bulunan restoran ve kafe, ziyaretçilere keyifli bir mola imkanı sağlar.",
+    "name_tr": "Sakıp Sabancı Müzesi",
+    "name_en": "Sakıp Sabancı Museum",
+    "description_tr": "Emirgan'daki Atlı Köşk'te yer alan müze, zengin hat sanatı ve resim koleksiyonunun yanı sıra dünyaca ünlü sanatçıların geçici sergilerine ev sahipliği yapar.",
+    "description_en": "Located in the Horse Mansion (Atlı Köşk) in Emirgan, the museum is known for its rich calligraphy and painting collections, as well as temporary exhibitions of world-famous artists.",
     "imageUrl": "/Images/sakip-sabanci.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        29.05769541524125,
-        41.105717254623116
-      ]
+      "coordinates": [29.05769541524125, 41.105717254623116]
     }
   },
   {
     "id": "Dolmabahce-Sarayi",
-    "name": "Dolmabahçe Sarayı",
-    "description": "Dolmabahçe Sarayı, İstanbul'un Beşiktaş ilçesinde yer alan tarihi bir saraydır. 13 yıl süren bir inşaat sürecinin ardından 1856 yılında tamamlanmış olan bu saray, Osmanlı İmparatorluğu'nun son döneminde, padişahlar ve devlet adamları için ikametgah olarak kullanılmıştır. Saray, Batı tarzı mimarisiyle dikkat çeker ve içerdiği süslemeler, altın kaplamalar ve geniş bahçeleriyle ziyaretçilerine göz alıcı bir görsel şölen sunar.\n\nDolmabahçe Sarayı, Türk tarihinde önemli bir yere sahiptir çünkü burada, Mustafa Kemal Atatürk, 10 Kasım 1938'de hayata gözlerini yummuştur. Sarayın iç mekanları, zarif mobilyalar, nadir sanat eserleri ve çok sayıda tarihi objeyle doludur. Ayrıca sarayın bahçesi, İstanbul Boğazı'na olan muazzam manzarasıyla ünlüdür.",
+    "name_tr": "Dolmabahçe Sarayı",
+    "name_en": "Dolmabahce Palace",
+    "description_tr": "1856 yılında tamamlanan Dolmabahçe Sarayı, Osmanlı'nın Batılılaşma döneminin en görkemli eseridir. Atatürk'ün son günlerini geçirdiği yer olması nedeniyle Türk milleti için derin bir manevi önemi vardır.",
+    "description_en": "Completed in 1856, Dolmabahce Palace is the most magnificent work of the Ottoman westernization period. It holds deep spiritual significance for the Turkish nation as it is the place where Atatürk spent his final days.",
     "imageUrl": "/Images/dolmabahce-sarayi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        29.00089928223006,
-        41.03928973118149
-      ]
+      "coordinates": [29.00089928223006, 41.03928973118149]
     }
   },
   {
     "id": "Ataturk-Muzesi",
-    "name": "Atatürk Müzesi",
-    "description": "Atatürk Müzesi, İstanbul'da bulunan ve Türkiye Cumhuriyeti'nin kurucusu Mustafa Kemal Atatürk'ün hayatına ve mücadelesine adanmış bir müzedir. Müze, Atatürk'ün İstanbul'daki özel yaşamı, sosyal faaliyetleri ve Cumhuriyetin ilanına kadar olan dönemdeki önemli anıları sergileyen birçok tarihi eseri bünyesinde barındırır. Müzede, Atatürk'ün kullandığı kişisel eşyalar, fotoğraflar, yazılı belgeler ve dönemin önemli hatıraları yer alır.\n\nMüze, Atatürk'ün hayatını ve Türk milletine olan katkılarını öğrenmek isteyen her yaştan ziyaretçi için eğitim verici bir alan sunmaktadır. Müzenin atmosferi, ziyaretçilere Atatürk'ün yaşamını daha yakından deneyimleme fırsatı verirken, aynı zamanda Türk tarihinin dönüm noktalarını da gözler önüne serer.",
+    "name_tr": "Atatürk Müzesi",
+    "name_en": "Ataturk Museum",
+    "description_tr": "Atatürk'ün Milli Mücadele çalışmaları sırasında kullandığı Şişli'deki evi, bugün kişisel eşyalarının ve tarihi belgelerin sergilendiği bir müzedir.",
+    "description_en": "The house in Şişli where Atatürk lived and worked during the years of the National Struggle is now a museum where his personal belongings and historical documents are exhibited.",
     "imageUrl": "/Images/ataturk-muzesi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.987564024560285,
-        41.05653287876145
-      ]
+      "coordinates": [28.987564024560285, 41.05653287876145]
     }
   },
   {
     "id": "Istanbul-Oyuncak-Muzesi",
-    "name": "İstanbul Oyuncak Müzesi",
-    "description": "İstanbul Oyuncak Müzesi, 2005 yılında kurulan, özellikle çocuklar ve nostalji sevenler için büyüleyici bir mekan olarak öne çıkmaktadır. Türkiye'nin ilk oyuncak müzesi olan bu müze, tarihsel anlamda önemli oyuncakların yanı sıra, dünya çapında pek çok kültüre ait oyuncakları da sergilemektedir. Müzede, eski ve yeni oyuncakların yanında, el yapımı figürler, bebekler ve oyuncak arabalar gibi çeşitli koleksiyonlar yer alır.\n\nMüze, yalnızca çocuklara hitap etmekle kalmaz, geçmişe özlem duyan yetişkinlere de nostaljik bir deneyim sunar. İstanbul Oyuncak Müzesi'nin en dikkat çeken özelliklerinden biri, farklı dönemlere ait oyuncakların bir arada sergilenmesidir. Ziyaretçiler, müzeyi gezerken geçmişin izlerini sürerken aynı zamanda eğlenceli bir yolculuğa çıkar.",
+    "name_tr": "İstanbul Oyuncak Müzesi",
+    "name_en": "Istanbul Toy Museum",
+    "description_tr": "Sunay Akın tarafından kurulan müze, dünyanın dört bir yanından toplanan tarihi oyuncaklarla ziyaretçilerini geçmişte bir yolculuğa çıkarır.",
+    "description_en": "Founded by Sunay Akın, the museum takes its visitors on a journey through history with antique toys collected from all over the world.",
     "imageUrl": "/Images/oyuncak-muzesi.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        29.0675757877395,
-        40.97719898933536
-      ]
+      "coordinates": [29.0675757877395, 40.97719898933536]
     }
   },
   {
     "id": "Miniaturk",
-    "name": "Miniatürk",
-    "description": "Miniatürk, İstanbul'da yer alan ve Türkiye'nin tarihi ve kültürel mirasını minyatür boyutlarda sergileyen bir açık hava müzesidir. 2003 yılında açılan bu parkta, Türkiye'nin farklı bölgelerinden 105 tarihi yapının minyatürleri bulunmaktadır. Miniatürk, Osmanlı İmparatorluğu'ndan Cumhuriyet'e kadar olan dönemi kapsayan birçok önemli yapıyı ve anıtı minyatür boyutlarda ziyaretçilere sunar.\n\nMüze, sadece Türk tarihini değil, aynı zamanda dünyadaki diğer önemli yapıları da sergileyen bir koleksiyona sahiptir. Miniatürk, çocuklar için eğitici bir alan olmanın yanı sıra, tarihi yapıları farklı bir bakış açısıyla görmek isteyen yetişkinler için de unutulmaz bir deneyim sunar. Parkta, her bir yapının detayları, mühendislik harikaları ve kültürel önemi vurgulanarak, ziyaretçilere zengin bir bilgi aktarımı yapılmaktadır.",
+    "name_tr": "Miniatürk",
+    "name_en": "Miniaturk",
+    "description_tr": "Türkiye'nin önemli tarihi yapılarının 1/25 oranındaki maketlerinin sergilendiği devasa bir açık hava müzesidir. 'Büyük Ülkenin Küçük Bir Modeli' sloganıyla hizmet verir.",
+    "description_en": "A massive open-air museum where 1/25 scale models of important historical structures from Turkey are exhibited. It serves with the slogan 'A Small Model of a Great Country'.",
     "imageUrl": "/Images/miniaturk.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.949544165532675,
-        41.059158326810916
-      ]
+      "coordinates": [28.949544165532675, 41.059158326810916]
     }
   },
   {
     "id": "Panorama-1453",
-    "name": "Panorama 1453 Tarih Müzesi",
-    "description": "Panorama 1453 Tarih Müzesi, İstanbul'un Fatih ilçesinde, İstanbul'un fethini anlatan görsel ve tarihi bir deneyim sunan bir müzedir. 2009 yılında açılan bu müze, 1453'teki İstanbul'un fethine dair önemli anları panoramik bir şekilde sunan dev bir tabloya ev sahipliği yapmaktadır. Müzede, İstanbul'un fetih süreci, Osmanlı İmparatorluğu'nun zaferi ve Bizans İmparatorluğu'nun çöküşü hakkında bilgi veren interaktif sergiler bulunmaktadır.\n\nPanorama 1453, ziyaretçilere tarihsel bir yolculuk yapma fırsatı verirken, aynı zamanda görsel olarak etkileyici bir deneyim de sunar. Müze, dönemin savaş teknolojisi, taktikleri ve İstanbul'un fethine giden yolu detaylı bir şekilde anlatmaktadır. Ziyaretçiler, tarihe tanıklık ederken aynı zamanda o dönemin atmosferini hissetme şansı bulurlar.",
+    "name_tr": "Panorama 1453 Tarih Müzesi",
+    "name_en": "Panorama 1453 History Museum",
+    "description_tr": "Dünyanın ilk tam panoramik müzesi olan bu yapı, İstanbul'un fethini devasa bir tablo ve ses efektleriyle ziyaretçilerine yeniden yaşatır.",
+    "description_en": "Being the world's first fully panoramic museum, this structure re-enacts the conquest of Istanbul for its visitors with a massive painting and sound effects.",
     "imageUrl": "/Images/panorama.png",
     "location": {
       "type": "Point",
-      "coordinates": [
-        28.92091669362591,
-        41.01844709037039
-      ]
+      "coordinates": [28.92091669362591, 41.01844709037039]
     }
   }
 ]

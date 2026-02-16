@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = "";
 
             museums.forEach(museum => {
+                const name = museum[`name_${lang}`] || museum.name;
+                const desc = museum[`description_${lang}`] || museum.description;
                 const card = document.createElement("a");
                 card.className = "museum-card";
                 card.href = `html/template.html?id=${museum.id}`;
