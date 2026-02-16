@@ -35,40 +35,32 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlideshow();
 });
 
-async function initSlideshow() {
-    const imgElement = document.getElementById('slideshow-img');
-    const titleElement = document.getElementById('slideshow-title');
-    
-    if (!imgElement) return;
+async function startSlideshow() {
+    const bg = document.getElementById('slideshow-bg');
+    const nameLabel = document.getElementById('museum-name');
+    if (!bg) return;
 
     try {
-        const response = await fetch('/api/museum');
-        const museums = await response.json();
-        
+        const res = await fetch('/api/museum');
+        const museums = await res.json();
+
         if (!museums || museums.length === 0) return;
 
-        let currentIndex = 0;
+        let i = 0;
+        const update = () => {
+            const m = museums[i];
+            if (m && m.image) {
+                bg.style.backgroundImage = `url('${m.image}')`;
+                nameLabel.innerText = m.name || "";
+                i = (i + 1) % museums.length;
+            }
+        };
 
-        function updateSlide() {
-            const museum = museums[currentIndex];
-            
-            imgElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                imgElement.src = museum.image;
-                titleElement.innerText = museum.name; 
-                imgElement.onload = () => {
-                    imgElement.style.opacity = 1;
-                };
-            }, 1000);
-
-            currentIndex = (currentIndex + 1) % museums.length;
-        }
-
-        updateSlide(); 
-        setInterval(updateSlide, 5000);
-
-    } catch (err) {
-        console.error("Slideshow yüklenemedi:", err);
+        update();
+        setInterval(update, 4000); // 4 saniyede bir aksın
+    } catch (e) {
+        console.log("Slide hatası:", e);
     }
 }
+
+document.addEventListener('DOMContentLoaded', startSlideshow);

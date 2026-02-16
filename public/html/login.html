@@ -19,31 +19,30 @@
         </div>
     </header>
 
-    <div class="auth-wrapper">
-        <div class="auth-content">
-            <h1 data-translate-key="loginTitle">Giriş Yap</h1>
-            <form id="login-form">
-                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required>
-                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required>
-                <button type="submit" data-translate-key="loginButton">GİRİŞ YAP</button>
-            </form>
-            <div class="switch-auth-link">
-                <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
-                <p>
-                    <span data-translate-key="noAccount">Hesabın yok mu?</span> 
-                    <a href="register.html" data-translate-key="registerLink">Kayıt Ol</a>
-                </p>
-            </div>
+    <div class="auth-wrapper"> <div class="auth-container">
+        <h1 data-translate-key="loginTitle">Giriş Yap</h1>
+        <form id="login-form">
+            <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required>
+            <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required>
+            <button type="submit" data-translate-key="loginButton">GİRİŞ YAP</button>
+        </form>
+        <div class="switch-auth-link">
+            <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
         </div>
+        <p class="switch-auth-link">
+            <span data-translate-key="noAccount">Hesabın yok mu?</span> 
+            <a href="register.html" data-translate-key="registerLink">Kayıt Ol</a>
+        </p>
+    </div>
 
-        <div class="auth-slideshow" id="slideshow-container">
-            <div class="slideshow-overlay"></div>
-            <img id="slideshow-img" src="" alt="Museum">
-            <div class="slideshow-text">
-                <h3 id="slideshow-title"></h3>
-            </div>
+    <div class="auth-slideshow-side">
+        <div id="slideshow-bg" class="slide-img"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-text">
+            <h2 id="museum-name"></h2>
         </div>
     </div>
+</div>
 
     <footer>
         <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
