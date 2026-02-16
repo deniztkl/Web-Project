@@ -52,7 +52,26 @@ const translations = {
       "genericServerError": "A server error occurred, please try again.",
       "usernameRulesTitle": "Username Rules:",
       "passwordRulesTitle": "Password Rules:",
-      "usernameExists": "This username already exists." 
+      "usernameExists": "This username already exists." ,
+      "forgotPasswordTitle": "Password Reset",
+        "forgotPasswordDesc": "Enter your registered email address, and we'll send you a reset link.",
+        "sendResetLinkBtn": "Send Reset Link",
+        "forgotPasswordLink": "Forgot Password?",
+        "backToLogin": "Back to Login",
+        "resetPasswordTitle": "Set New Password",
+        "updatePasswordBtn": "Update Password",
+        "passwordMismatch": "Passwords do not match!",
+        "passwordUpdateSuccess": "Your password has been updated successfully! You can now log in.",
+
+        // Placeholders
+        "emailPlaceholder": "Your Email Address",
+        "newPasswordPlaceholder": "New Password",
+        "confirmPasswordPlaceholder": "Confirm New Password",
+
+        // API Messages
+        "resetMailSent": "Reset link has been sent to your email!",
+        "mailNotFound": "This email address was not found.",
+        "serverError": "An error occurred, please try again."
     }
   },
   // Türkçe Metinler
@@ -99,6 +118,26 @@ const translations = {
     "moveConfirmFail": "Taşıma başarısız.",
     "removeConfirmFail": "Kaldırma başarısız.",
     "logoutConfirmFail": "Çıkış yapılamadı.",
+          // Şifremi Unuttum & Sıfırlama Sayfaları
+        "forgotPasswordTitle": "Şifre Sıfırlama",
+        "forgotPasswordDesc": "Kayıtlı e-posta adresinizi girin, size bir sıfırlama linki gönderelim.",
+        "sendResetLinkBtn": "Sıfırlama Linki Gönder",
+        "forgotPasswordLink": "Şifremi Unuttum",
+        "backToLogin": "Giriş Sayfasına Dön",
+        "resetPasswordTitle": "Yeni Şifre Belirle",
+        "updatePasswordBtn": "Şifreyi Güncelle",
+        "passwordMismatch": "Şifreler eşleşmiyor!",
+        "passwordUpdateSuccess": "Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz.",
+        
+        // Placeholderlar (eğer JS ile çevireceksen)
+        "emailPlaceholder": "E-posta Adresiniz",
+        "newPasswordPlaceholder": "Yeni Şifre",
+        "confirmPasswordPlaceholder": "Yeni Şifre Tekrar",
+
+        // Hata & Başarı Mesajları (API'den dönenler için)
+        "resetMailSent": "Sıfırlama linki mailinize gönderildi!",
+        "mailNotFound": "Bu mail adresi bulunamadı.",
+        "serverError": "Bir hata oluştu, lütfen tekrar deneyin.",
         "validation": { 
       "fieldRequired": "Lütfen tüm zorunlu alanları doldurun.",
       "usernameLength": "Kullanıcı adı 3 ila 16 karakter arasında olmalıdır.",

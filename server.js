@@ -12,6 +12,17 @@ const Museum = require('./models/Museum');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS 
+    }
+});
+
 app.set('trust proxy', 1);
 
 const corsOptions = {
@@ -37,6 +48,41 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
 }));
+
+app.post('/api/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "Bu mail adresi bulunamadı." });
+
+        // Güvenli, rastgele bir token oluştur
+        const token = crypto.randomBytes(20).toString('hex');
+        
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000;
+        await user.save();
+
+        const resetUrl = `https://dijitalmuzeler.onrender.com//html/reset-password.html?token=${token}`;
+
+        const mailOptions = {
+            to: user.email,
+            subject: 'Şifre Sıfırlama Talebi - Dijital Müze',
+            html: `
+                <div style="background-color: #0f1113; color: white; padding: 20px; font-family: sans-serif;">
+                    <h1 style="color: #d4af37;">Şifre Sıfırlama</h1>
+                    <p>Şifrenizi sıfırlamak için aşağıdaki butona tıklayın:</p>
+                    <a href="${resetUrl}" style="background-color: #d4af37; color: black; padding: 10px 20px; text-decoration: none; font-weight: bold;">Şifremi Sıfırla</a>
+                    <p>Bu link 1 saat sonra geçersiz olacaktır.</p>
+                </div>
+            `
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.json({ message: "Sıfırlama linki mailinize gönderildi!" });
+    } catch (err) {
+        res.status(500).json({ message: "Sunucu hatası." });
+    }
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
