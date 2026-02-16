@@ -63,7 +63,7 @@ const translations = {
     "profileLink": "Profilim",
     "mainTitle": "İstanbul Müzeleri",
     "generalError": "Bir hata oluştu. Lütfen tekrar deneyin.",
-    "copyrightNotice": "© 2025 Dijital Müze. Tüm Hakları Saklıdır.",
+    "copyrightNotice": "© 2025 Dijital Müzeler. Tüm Hakları Saklıdır.",
     // Login & Register Sayfaları
     "loginTitle": "Giriş Yap",
     "registerTitle": "Kayıt Ol",
