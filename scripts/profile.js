@@ -16,26 +16,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Fonksiyon Tanımlamaları ---
     const getMuseumById = (id) => museums.find(m => m.id.toString() === id.toString());
 
-    const renderPage = () => {
-        if (!userData || !museums) return;
-        const lang = window.currentLang || 'tr';
-        editButton.textContent = isEditing ? translations[lang].saveButton : translations[lang].editButton;
-        usernameGreeting.innerText = translations[lang].welcomeMessage + userData.username;
-        headerUsername.innerText = userData.username; 
-        
-        visitedList.innerHTML = "";
-        wishlistList.innerHTML = "";
-        
-        const createEmptyMessage = () => `<p>${translations[lang].noMuseums}</p>`;
+const renderPage = () => {
+    if (!userData || !museums) return;
+    const lang = window.currentLang || 'tr';
+    
+    const welcomeTxt = translations[lang].welcomeMessage || (lang === 'tr' ? "Hoş geldin, " : "Welcome, ");
+    
+    editButton.textContent = isEditing ? translations[lang].saveButton : translations[lang].editButton;
+    
+    const welcomePrefix = (translations[lang] && translations[lang].welcomeMessage) 
+                      ? translations[lang].welcomeMessage 
+                      : (lang === 'tr' ? "Hoş geldin, " : "Welcome, ");
 
-        visitedList.innerHTML = userData.visitedMuseums?.length > 0
-            ? userData.visitedMuseums.map(id => createMuseumItemHTML(id, "visitedMuseums", "wishlist")).join('')
-            : createEmptyMessage();
+usernameGreeting.innerText = welcomePrefix + userData.username;
+    headerUsername.innerText = userData.username; 
+    usernameGreeting.style.color = "var(--accent-color)";
+    usernameGreeting.style.display = "block";
 
-        wishlistList.innerHTML = userData.wishlist?.length > 0
-            ? userData.wishlist.map(id => createMuseumItemHTML(id, "wishlist", "visitedMuseums")).join('')
-            : createEmptyMessage();
-    };
+    visitedList.innerHTML = "";
+    wishlistList.innerHTML = "";
+    
+    const createEmptyMessage = () => `<p style="color: var(--secondary-text-color)">${translations[lang].noMuseums}</p>`;
+
+    visitedList.innerHTML = userData.visitedMuseums?.length > 0
+        ? userData.visitedMuseums.map(id => createMuseumItemHTML(id, "visitedMuseums", "wishlist")).join('')
+        : createEmptyMessage();
+
+    wishlistList.innerHTML = userData.wishlist?.length > 0
+        ? userData.wishlist.map(id => createMuseumItemHTML(id, "wishlist", "visitedMuseums")).join('')
+        : createEmptyMessage();
+};
 
     const createMuseumItemHTML = (id, fromList, toList) => {
         const museum = getMuseumById(id);
