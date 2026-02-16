@@ -16,11 +16,16 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS 
-    }
+    },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 10000
 });
 
 app.set('trust proxy', 1);
@@ -51,9 +56,14 @@ app.use(session({
 
 app.post('/api/forgot-password', async (req, res) => {
     const { email } = req.body;
+    console.log("Şifre sıfırlama isteği geldi:", email);
+
     try {
         const user = await User.findOne({ email });
-        if (!user) return res.status(404).json({ message: "Bu mail adresi bulunamadı." });
+        if (!user) {
+            console.log("Kullanıcı bulunamadı.");
+            return res.status(404).json({ message: "Bu mail adresi bulunamadı." });
+        }
 
         const token = crypto.randomBytes(20).toString('hex');
         user.resetPasswordToken = token;
@@ -65,23 +75,18 @@ app.post('/api/forgot-password', async (req, res) => {
         const mailOptions = {
             to: user.email,
             subject: 'Şifre Sıfırlama Talebi - Dijital Müze',
-            html: `
-                <div style="background-color: #0f1113; color: white; padding: 20px; font-family: sans-serif;">
-                    <h1 style="color: #d4af37;">Şifre Sıfırlama</h1>
-                    <p>Şifrenizi sıfırlamak için aşağıdaki butona tıklayın:</p>
-                    <a href="${resetUrl}" style="background-color: #d4af37; color: black; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">Şifremi Sıfırla</a>
-                    <p>Bu link 1 saat sonra geçersiz olacaktır.</p>
-                </div>
-            `
+            html: `<h1>Şifre Sıfırlama</h1><p>Link: ${resetUrl}</p>`
         };
 
+        console.log("Mail gönderiliyor...");
         await transporter.sendMail(mailOptions);
+        console.log("Mail başarıyla gönderildi!");
         
         return res.json({ message: "Sıfırlama linki mailinize gönderildi!" });
 
     } catch (err) {
-        console.error("Mail Gönderme Hatası:", err);
-        return res.status(500).json({ message: "Mail gönderilirken bir hata oluştu. Lütfen Gmail uygulama şifrenizi kontrol edin." });
+        console.error("MAİL GÖNDERME HATASI DETAYI:", err);
+        return res.status(500).json({ message: "Sistem hatası: " + err.message });
     }
 });
 
