@@ -10,25 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+RO:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="left"><h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1></div>
-        <div class="center">
-            <nav><a href="/index.html" class="nav-link" data-translate-key="navMuseums">Müzeler</a></nav>
+<header>
+    <div class="left">
+        <h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1>
+    </div>
+    <div class="center">
+        <nav>
+            <a href="/index.html" class="nav-link" data-translate-key="navMuseums">Müzeler</a>
+        </nav>
+    </div>
+    <div class="right">
+        <button id="theme-toggle" class="theme-toggle">
+            <svg id="theme-icon" viewBox="0 0 24 24">
+                <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 5.16 5.4 5.4 0 0 1-5.64-5.64 5.389 5.389 0 0 1 5.16-4.4c-.44-.06-.9-.1-1.36-.1z"/>
+            </svg>
+        </button>
+        <div id="language-switcher">
+            <button id="lang-tr">TR</button>
+            <button id="lang-en">EN</button>
         </div>
-        <div class="right">
-             <div id="language-switcher">
-                <button id="lang-tr">TR</button>
-                <button id="lang-en">EN</button>
-            </div>
-            <a href="/html/profile.html" class="profile-button" data-translate-key="profileLink">Profilim</a>
-        </div>
-    </header>
+        <a href="/html/profile.html" class="profile-button" data-translate-key="profileLink">Profilim</a>
+    </div>
+</header>
 
     <div id="museum-detail-container"></div>
 
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/language.js"></script>
     <script src="/scripts/template.js"></script>
+    <script src="/scripts/theme.js"></script>
         <footer>
         <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
     </footer>
