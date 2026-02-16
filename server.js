@@ -55,14 +55,12 @@ app.post('/api/forgot-password', async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) return res.status(404).json({ message: "Bu mail adresi bulunamadı." });
 
-        // Güvenli, rastgele bir token oluştur
         const token = crypto.randomBytes(20).toString('hex');
-        
         user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000;
+        user.resetPasswordExpires = Date.now() + 3600000; 
         await user.save();
 
-        const resetUrl = `https://dijitalmuzeler.onrender.com//html/reset-password.html?token=${token}`;
+        const resetUrl = `https://dijitalmuzeler.onrender.com/html/reset-password.html?token=${token}`;
 
         const mailOptions = {
             to: user.email,
@@ -71,16 +69,19 @@ app.post('/api/forgot-password', async (req, res) => {
                 <div style="background-color: #0f1113; color: white; padding: 20px; font-family: sans-serif;">
                     <h1 style="color: #d4af37;">Şifre Sıfırlama</h1>
                     <p>Şifrenizi sıfırlamak için aşağıdaki butona tıklayın:</p>
-                    <a href="${resetUrl}" style="background-color: #d4af37; color: black; padding: 10px 20px; text-decoration: none; font-weight: bold;">Şifremi Sıfırla</a>
+                    <a href="${resetUrl}" style="background-color: #d4af37; color: black; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">Şifremi Sıfırla</a>
                     <p>Bu link 1 saat sonra geçersiz olacaktır.</p>
                 </div>
             `
         };
 
         await transporter.sendMail(mailOptions);
-        res.json({ message: "Sıfırlama linki mailinize gönderildi!" });
+        
+        return res.json({ message: "Sıfırlama linki mailinize gönderildi!" });
+
     } catch (err) {
-        res.status(500).json({ message: "Sunucu hatası." });
+        console.error("Mail Gönderme Hatası:", err);
+        return res.status(500).json({ message: "Mail gönderilirken bir hata oluştu. Lütfen Gmail uygulama şifrenizi kontrol edin." });
     }
 });
 
