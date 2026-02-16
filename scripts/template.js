@@ -15,9 +15,8 @@ function renderPage(museum, user) {
     currentUser = user; 
 
     const lang = window.currentLang;
-    // Dile göre doğru verileri seçiyoruz
     const museumName = museum[`name_${lang}`] || museum.name;
-    const museumDesc = museum[`description_${lang}`] || museum.description || ""; // undefined gelirse boş string döner
+    const museumDesc = museum[`description_${lang}`] || museum.description || ""; 
 
     const container = document.getElementById('museum-detail-container');
     container.innerHTML = '';

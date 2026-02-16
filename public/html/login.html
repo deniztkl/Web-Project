@@ -6,11 +6,9 @@
     <link rel="stylesheet" href="/css/stylegeneral.css">
     <link rel="stylesheet" href="/css/auth.css">
 </head>
-<body class="auth-body">
+<body>
     <header>
-        <div class="left">
-            <h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1>
-        </div>
+        <div class="left"><h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1></div>
         <div class="right">
             <div id="language-switcher">
                 <button id="lang-tr">TR</button>
@@ -19,33 +17,31 @@
         </div>
     </header>
 
-    <div class="auth-wrapper">
-        <div class="auth-container">
+    <div class="auth-container">
+        <div class="auth-content"> 
             <h1 data-translate-key="loginTitle">Giriş Yap</h1>
-            <form id="login-form">
+            <form id="login-form" novalidate>
                 <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required>
                 <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required>
-                <button type="submit" data-translate-key="loginButton">GİRİŞ YAP</button>
+                <button type="submit" data-translate-key="loginButton">Giriş Yap</button>
             </form>
             <div class="switch-auth-link">
                 <a href="/html/forgot-password.html" data-translate-key="forgotPasswordLink">Şifremi Unuttum</a>
             </div>
-            <p class="switch-auth-link">
-                <span data-translate-key="noAccount">Hesabın yok mu?</span> 
-                <a href="register.html" data-translate-key="registerLink">Kayıt Ol</a>
-            </p>
         </div>
-
-        <div class="auth-slideshow-side">
-            <div id="slideshow-bg" class="slide-img"></div>
-            <div class="slide-overlay"></div>
-            <div class="slide-text">
-                <h2 id="museum-name"></h2>
-            </div>
-        </div>
+        <p class="switch-auth-link">
+            <span data-translate-key="noAccount">Hesabın yok mu?</span> 
+            <a href="register.html" data-translate-key="registerLink">Kayıt ol</a>
+        </p>
     </div>
 
-    <footer>
+    <div class="auth-slideshow-full">
+        <div id="slideshow-bg-next" class="slide-img" style="opacity: 0;"></div>
+        <div id="slideshow-bg" class="slide-img"></div>
+        <div class="slide-overlay"></div>
+    </div>
+
+    <footer class="auth-footer">
         <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
     </footer>
 

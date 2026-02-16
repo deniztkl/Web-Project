@@ -8,9 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="left">
-            <h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1>
-        </div>
+        <div class="left"><h1 data-translate-key="mainTitle">İstanbul Müzeleri</h1></div>
         <div class="right">
             <div id="language-switcher">
                 <button id="lang-tr">TR</button>
@@ -20,29 +18,16 @@
     </header>
 
     <div class="auth-container">
-        
         <div class="auth-content">
             <h1 data-translate-key="registerTitle">Kayıt Ol</h1>
             <div id="message-container"></div>
             <form id="register-form">
-                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required><br>
-                <input type="email" id="email" placeholder="E-posta Adresi" required><br>
-                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required><br>
+                <input type="text" id="username" data-translate-key="usernamePlaceholder" placeholder="Kullanıcı adı" required>
+                <input type="email" id="email" data-translate-key="emailPlaceholder" placeholder="E-posta Adresi" required>
+                <input type="password" id="password" data-translate-key="passwordPlaceholder" placeholder="Şifre" required>
+                
                 <button type="submit" data-translate-key="registerButton">Kayıt Ol</button>
             </form>
-
-            <div class="validation-rules">
-                <p><strong data-translate-key="validation.usernameRulesTitle">Kullanıcı Adı Kuralları:</strong></p>
-                <ul>
-                    <li id="username-length-rule" data-translate-key="validation.usernameLength">3 ila 16 karakter arasında olmalıdır.</li>
-                    <li id="username-chars-rule" data-translate-key="validation.usernameChars">Sadece İngilizce harfler içerebilir.</li>
-                </ul>
-                <p><strong data-translate-key="validation.passwordRulesTitle">Şifre Kuralları:</strong></p>
-                <ul>
-                    <li id="password-length-rule" data-translate-key="validation.passwordLength">En az 8 karakter uzunluğunda olmalıdır.</li>
-                    <li id="password-requirements-rule" data-translate-key="validation.passwordRequirements">En az bir büyük harf, bir küçük harf, bir rakam ve bir sembol içermelidir.</li>
-                </ul>
-            </div>
         </div>
         <p class="switch-auth-link">
             <span data-translate-key="hasAccount">Zaten bir hesabın var mı?</span> 
@@ -50,8 +35,16 @@
         </p>
     </div>
 
-    <footer><p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p></footer>
-    
+    <div class="auth-slideshow-full">
+        <div id="slideshow-bg-next" class="slide-img" style="opacity: 0;"></div>
+        <div id="slideshow-bg" class="slide-img"></div>
+        <div class="slide-overlay"></div>
+    </div>
+
+    <footer class="auth-footer">
+        <p data-translate-key="copyrightNotice">© 2025 Dijital Müzeler. Her Hakkı Saklıdır.</p>
+    </footer>
+
     <script src="/scripts/translations.js"></script>
     <script src="/scripts/language.js"></script>
     <script src="/scripts/register.js"></script>

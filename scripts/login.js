@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Giriş Formu İşlemi
+    // 1. Giriş Formu İşlemi
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -13,10 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password }),
                 });
+
                 if (response.ok) {
                     window.location.href = '/html/profile.html';
                 } else {
-                    alert("Giriş başarısız!");
+                    // Dil dosyandan loginFail mesajını çekiyoruz
+                    const errorMsg = translations[window.currentLang]?.loginFail || "Giriş başarısız!";
+                    alert(errorMsg);
                 }
             } catch (err) {
                 console.error(err);
@@ -24,38 +27,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Slideshow Başlat
+    // 2. Slideshow Başlat
     initSlideshow();
 });
 
-async function initSlideshow() {
-    const bg = document.getElementById('slideshow-bg');
-    const nameLabel = document.getElementById('museum-name');
-    if (!bg || !nameLabel) return;
+    async function initSlideshow() {
+        const currentBg = document.getElementById('slideshow-bg');
+        const nextBg = document.getElementById('slideshow-bg-next');
+        if (!currentBg || !nextBg) return;
 
-    try {
-        const res = await fetch('/api/museum');
-        const museums = await res.json();
-
-        // Veri yoksa alanı temizle ve çık (undefined yazmaz)
-        if (!museums || museums.length === 0) {
-            nameLabel.innerText = "";
-            return;
-        }
-
-        let i = 0;
-        const update = () => {
-            const m = museums[i];
-            if (m && m.image) {
-                bg.style.backgroundImage = `url('${m.image}')`;
-                nameLabel.innerText = m.name || "";
-                i = (i + 1) % museums.length;
+        try {
+            const res = await fetch('/api/museum');
+            let museums = await res.json();
+            
+            if (!museums || museums.length === 0) {
+                console.error("API'den müze verisi gelmedi.");
+                return;
             }
-        };
 
-        update();
-        setInterval(update, 4500);
-    } catch (e) {
-        console.warn("Slideshow yüklenemedi.");
-    }
+            // Rastgele karıştırma (Daha güvenli yöntem)
+            museums = [...museums].sort(() => Math.random() - 0.5);
+            
+            // Veri yapısını kontrol et: imageUrl mü yoksa image mi?
+            const getPath = (m) => m.imageUrl || m.image || "";
+
+            let i = 0;
+            // İlk resmi yükle
+            const firstImg = getPath(museums[i]);
+            currentBg.style.backgroundImage = `url('${firstImg}')`;
+            currentBg.style.opacity = "1";
+
+            const update = () => {
+                let nextIndex = (i + 1) % museums.length;
+                const nextMuseum = museums[nextIndex];
+                const nextImgPath = getPath(nextMuseum);
+
+                // 1. Arkadaki div'e bir sonraki resmi yükle
+                nextBg.style.backgroundImage = `url('${nextImgPath}')`;
+                nextBg.style.opacity = "1";
+
+                // 2. Öndeki resmi yavaşça yok et
+                currentBg.style.opacity = "0";
+
+                // 3. Geçiş tamamlandığında
+                setTimeout(() => {
+                    currentBg.style.transition = "none"; 
+                    currentBg.style.backgroundImage = `url('${nextImgPath}')`;
+                    currentBg.style.opacity = "1"; 
+                    
+                    i = nextIndex;
+
+                    setTimeout(() => {
+                        currentBg.style.transition = "opacity 1.5s ease-in-out";
+                    }, 50);
+                }, 1500); 
+            };
+
+            setInterval(update, 5000);
+
+        } catch (e) {
+            console.error("Slideshow hatası:", e);
+        }
 }
