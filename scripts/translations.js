@@ -7,8 +7,9 @@ const translations = {
     "profileLink": "My Profile",
     "mainTitle": "Museums of Istanbul",
     "generalError": "An error occurred. Please try again.",
-    "copyrightNotice": "© 2025 Dijital Müzeler. All Rights Reserved.",
-    // Login & Register Sayfaları
+    "copyrightNotice": "© 2026 Dijital Müzeler. All Rights Reserved.",
+    
+    // Login & Register
     "loginTitle": "Login",
     "registerTitle": "Register",
     "usernamePlaceholder": "Username",
@@ -21,6 +22,26 @@ const translations = {
     "loginLink": "Login",
     "loginFail": "Invalid username or password!",
     "registerFail": "Registration failed:",
+    "forgotPasswordLink": "Forgot Password?",
+
+    // Şifre Sıfırlama Sayfaları (Forgot & Reset)
+    "forgotPasswordTitle": "Password Reset",
+    "forgotPasswordDesc": "Enter your registered email address, and we'll send you a reset link.",
+    "sendResetLinkBtn": "Send Reset Link",
+    "backToLogin": "Back to Login",
+    "resetPasswordTitle": "Set New Password",
+    "updatePasswordBtn": "Update Password",
+    "passwordMismatch": "Passwords do not match!",
+    "passwordUpdateSuccess": "Your password has been updated successfully! You can now log in.",
+    
+    // Placeholders & API Mesajları
+    "emailPlaceholder": "Your Email Address",
+    "newPasswordPlaceholder": "New Password",
+    "confirmPasswordPlaceholder": "Confirm New Password",
+    "resetMailSent": "Reset link has been sent to your email!",
+    "mailNotFound": "This email address was not found.",
+    "serverError": "An error occurred, please try again.",
+
     // Template Sayfası
     "descriptionTitle": "Description",
     "addToVisited": "I Have Visited This Museum",
@@ -30,6 +51,7 @@ const translations = {
     "alertAddedToVisited": "added to your visited list.",
     "alertAddedToWishlist": "added to your wishlist.",
     "alertAddFail": "Could not be added to the list.",
+
     // Profil Sayfası
     "welcomeMessage": "Welcome, ",
     "editButton": "Edit",
@@ -43,7 +65,9 @@ const translations = {
     "moveConfirmFail": "Move failed.",
     "removeConfirmFail": "Removal failed.",
     "logoutConfirmFail": "Logout failed.",
-        "validation": {
+
+    // Validasyonlar
+    "validation": {
       "fieldRequired": "Please fill out all required fields.",
       "usernameLength": "Username must be between 3 and 16 characters.",
       "usernameChars": "Username can only contain English letters.",
@@ -52,28 +76,10 @@ const translations = {
       "genericServerError": "A server error occurred, please try again.",
       "usernameRulesTitle": "Username Rules:",
       "passwordRulesTitle": "Password Rules:",
-      "usernameExists": "This username already exists." ,
-      "forgotPasswordTitle": "Password Reset",
-        "forgotPasswordDesc": "Enter your registered email address, and we'll send you a reset link.",
-        "sendResetLinkBtn": "Send Reset Link",
-        "forgotPasswordLink": "Forgot Password?",
-        "backToLogin": "Back to Login",
-        "resetPasswordTitle": "Set New Password",
-        "updatePasswordBtn": "Update Password",
-        "passwordMismatch": "Passwords do not match!",
-        "passwordUpdateSuccess": "Your password has been updated successfully! You can now log in.",
-
-        // Placeholders
-        "emailPlaceholder": "Your Email Address",
-        "newPasswordPlaceholder": "New Password",
-        "confirmPasswordPlaceholder": "Confirm New Password",
-
-        // API Messages
-        "resetMailSent": "Reset link has been sent to your email!",
-        "mailNotFound": "This email address was not found.",
-        "serverError": "An error occurred, please try again."
+      "usernameExists": "This username already exists."
     }
   },
+
   // Türkçe Metinler
   "tr": {
     // Genel
@@ -82,8 +88,9 @@ const translations = {
     "profileLink": "Profilim",
     "mainTitle": "İstanbul Müzeleri",
     "generalError": "Bir hata oluştu. Lütfen tekrar deneyin.",
-    "copyrightNotice": "© 2025 Dijital Müzeler. Tüm Hakları Saklıdır.",
-    // Login & Register Sayfaları
+    "copyrightNotice": "© 2026 Dijital Müzeler. Tüm Hakları Saklıdır.",
+    
+    // Login & Register
     "loginTitle": "Giriş Yap",
     "registerTitle": "Kayıt Ol",
     "usernamePlaceholder": "Kullanıcı adı",
@@ -96,6 +103,26 @@ const translations = {
     "loginLink": "Giriş Yap",
     "loginFail": "Kullanıcı adı veya şifre hatalı!",
     "registerFail": "Kayıt başarısız:",
+    "forgotPasswordLink": "Şifremi Unuttum",
+
+    // Şifre Sıfırlama Sayfaları (Forgot & Reset)
+    "forgotPasswordTitle": "Şifre Sıfırlama",
+    "forgotPasswordDesc": "Kayıtlı e-posta adresinizi girin, size bir sıfırlama linki gönderelim.",
+    "sendResetLinkBtn": "Sıfırlama Linki Gönder",
+    "backToLogin": "Giriş Sayfasına Dön",
+    "resetPasswordTitle": "Yeni Şifre Belirle",
+    "updatePasswordBtn": "Şifreyi Güncelle",
+    "passwordMismatch": "Şifreler eşleşmiyor!",
+    "passwordUpdateSuccess": "Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz.",
+
+    // Placeholders & API Mesajları
+    "emailPlaceholder": "E-posta Adresiniz",
+    "newPasswordPlaceholder": "Yeni Şifre",
+    "confirmPasswordPlaceholder": "Yeni Şifre Tekrar",
+    "resetMailSent": "Sıfırlama linki mailinize gönderildi!",
+    "mailNotFound": "Bu mail adresi bulunamadı.",
+    "serverError": "Bir hata oluştu, lütfen tekrar deneyin.",
+
     // Template Sayfası
     "descriptionTitle": "Açıklama",
     "addToVisited": "Bu Müzeyi Daha Önce Ziyaret Ettim.",
@@ -105,6 +132,7 @@ const translations = {
     "alertAddedToVisited": "ziyaret edilen müzelere eklendi.",
     "alertAddedToWishlist": "ziyaret etmek istenen müzelere eklendi.",
     "alertAddFail": "Listeye eklenemedi.",
+
     // Profil Sayfası
     "welcomeMessage": "Hoş geldin, ",
     "editButton": "Düzenle",
@@ -118,27 +146,9 @@ const translations = {
     "moveConfirmFail": "Taşıma başarısız.",
     "removeConfirmFail": "Kaldırma başarısız.",
     "logoutConfirmFail": "Çıkış yapılamadı.",
-          // Şifremi Unuttum & Sıfırlama Sayfaları
-        "forgotPasswordTitle": "Şifre Sıfırlama",
-        "forgotPasswordDesc": "Kayıtlı e-posta adresinizi girin, size bir sıfırlama linki gönderelim.",
-        "sendResetLinkBtn": "Sıfırlama Linki Gönder",
-        "forgotPasswordLink": "Şifremi Unuttum",
-        "backToLogin": "Giriş Sayfasına Dön",
-        "resetPasswordTitle": "Yeni Şifre Belirle",
-        "updatePasswordBtn": "Şifreyi Güncelle",
-        "passwordMismatch": "Şifreler eşleşmiyor!",
-        "passwordUpdateSuccess": "Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz.",
-        
-        // Placeholderlar (eğer JS ile çevireceksen)
-        "emailPlaceholder": "E-posta Adresiniz",
-        "newPasswordPlaceholder": "Yeni Şifre",
-        "confirmPasswordPlaceholder": "Yeni Şifre Tekrar",
 
-        // Hata & Başarı Mesajları (API'den dönenler için)
-        "resetMailSent": "Sıfırlama linki mailinize gönderildi!",
-        "mailNotFound": "Bu mail adresi bulunamadı.",
-        "serverError": "Bir hata oluştu, lütfen tekrar deneyin.",
-        "validation": { 
+    // Validasyonlar
+    "validation": {
       "fieldRequired": "Lütfen tüm zorunlu alanları doldurun.",
       "usernameLength": "Kullanıcı adı 3 ila 16 karakter arasında olmalıdır.",
       "usernameChars": "Kullanıcı adı sadece İngilizce harfler içerebilir.",
