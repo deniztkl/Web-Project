@@ -20,15 +20,25 @@ const renderPage = () => {
     if (!userData || !museums) return;
     const lang = window.currentLang || 'tr';
     
+    // --- Düzenle Butonu Görünürlük Kontrolü ---
+    const hasVisited = userData.visitedMuseums && userData.visitedMuseums.length > 0;
+    const hasWishlist = userData.wishlist && userData.wishlist.length > 0;
+
+    if (!hasVisited && !hasWishlist) {
+        editButton.style.display = "none";
+    } else {
+        editButton.style.display = "block";
+    }
+
     const welcomeTxt = translations[lang].welcomeMessage || (lang === 'tr' ? "Hoş geldin, " : "Welcome, ");
     
     editButton.textContent = isEditing ? translations[lang].saveButton : translations[lang].editButton;
     
     const welcomePrefix = (translations[lang] && translations[lang].welcomeMessage) 
-                      ? translations[lang].welcomeMessage 
-                      : (lang === 'tr' ? "Hoş geldin, " : "Welcome, ");
+                        ? translations[lang].welcomeMessage 
+                        : (lang === 'tr' ? "Hoş geldin, " : "Welcome, ");
 
-usernameGreeting.innerText = welcomePrefix + userData.username;
+    usernameGreeting.innerText = welcomePrefix + userData.username;
     headerUsername.innerText = userData.username; 
     usernameGreeting.style.color = "var(--accent-color)";
     usernameGreeting.style.display = "block";
@@ -38,11 +48,11 @@ usernameGreeting.innerText = welcomePrefix + userData.username;
     
     const createEmptyMessage = () => `<p style="color: var(--secondary-text-color)">${translations[lang].noMuseums}</p>`;
 
-    visitedList.innerHTML = userData.visitedMuseums?.length > 0
+    visitedList.innerHTML = hasVisited
         ? userData.visitedMuseums.map(id => createMuseumItemHTML(id, "visitedMuseums", "wishlist")).join('')
         : createEmptyMessage();
 
-    wishlistList.innerHTML = userData.wishlist?.length > 0
+    wishlistList.innerHTML = hasWishlist
         ? userData.wishlist.map(id => createMuseumItemHTML(id, "wishlist", "visitedMuseums")).join('')
         : createEmptyMessage();
 };

@@ -1,5 +1,3 @@
-/* --- MUSEUM & PROFILE SECTIONS --- */
-
 .museum-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -14,7 +12,7 @@
     display: flex;
     flex-direction: column;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border-radius: 2px; /* Keskin ve asil hatlar */
+    border-radius: 2px;
     overflow: hidden;
 }
 
@@ -28,12 +26,12 @@
     width: 100%;
     height: 240px;
     object-fit: cover;
-    filter: grayscale(30%) brightness(0.8); /* Daha asil bir tonlama */
+    filter: grayscale(30%) brightness(0.8);
     transition: all 0.5s ease;
 }
 
 .museum-card:hover img {
-    filter: grayscale(0%) brightness(1); /* Hoverda canlanan renkler */
+    filter: grayscale(0%) brightness(1); 
 }
 
 .museum-card h3 {
@@ -54,7 +52,6 @@
     flex-grow: 1;
 }
 
-/* SECTION GENEL AYARLARI */
 main section { 
     background: var(--surface-color); 
     padding: 30px; 
@@ -71,7 +68,6 @@ main section h2 {
     letter-spacing: 1px;
 }
 
-/* USER SECTION & GREETING */
 .user-section { 
     display: flex; 
     justify-content: space-between; 
@@ -85,7 +81,7 @@ main section h2 {
 #username-greeting {
     font-family: "Playfair Display", serif !important;
     font-size: 2rem !important;
-    color: var(--accent-color) !important; /* Altın tonuyla uyumlu */
+    color: var(--accent-color) !important;
     display: block !important;
     font-weight: 400;
 }
@@ -115,11 +111,11 @@ main ul li {
     content: ""; 
     position: absolute; 
     top: 0; left: 0; width: 100%; height: 100%; 
-    background: linear-gradient(to top, rgba(8, 9, 10, 0.9), rgba(8, 9, 10, 0.3)); /* Karanlık gradyan */
+    background: linear-gradient(to top, rgba(8, 9, 10, 0.9), rgba(8, 9, 10, 0.3)); 
     z-index: 1;
 }
 
-.list-item-link span { /* Eğer isim span içindeyse üstte tutmak için */
+.list-item-link span {
     position: relative;
     z-index: 2;
     letter-spacing: 1px;
@@ -127,14 +123,13 @@ main ul li {
 
 .list-item-actions {
     padding: 15px 25px; 
-    background-color: #0c0e10; /* Biraz daha derin bir ton */
+    background-color: #0c0e10;
     display: flex; 
     justify-content: flex-end; 
     gap: 15px;
     border-top: 1px solid var(--border-color);
 }
 
-/* Butonlar için genel asil duruş (Sınıf isimlerini bilmediğim için genel yazdım) */
 .list-item-actions button {
     padding: 8px 18px;
     background: transparent;
@@ -154,7 +149,7 @@ main ul li {
 }
 
 .list-item-actions button:last-of-type {
-    border-color: #632a2a; /* Çok parlak olmayan asil bir kırmızı */
+    border-color: #632a2a;
     color: #cc7a7a;
 }
 

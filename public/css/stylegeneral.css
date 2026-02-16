@@ -114,7 +114,7 @@ main { max-width: 1200px; margin: 40px auto; padding: 0 20px; width: 100%; box-s
 
 /* --- GÜNCELLENEN ASİL FOOTER (Auth Sayfasıyla Aynı) --- */
 footer {
-    height: 30px; /* Sabit ince yükseklik */
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
