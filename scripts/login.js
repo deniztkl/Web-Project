@@ -1,18 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- GİRİŞ İŞLEMLERİ ---
+    // Giriş Formu İşlemi
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
-        loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const currentLang = window.currentLang || 'tr';
-
-            if (!username || !password) {
-                alert(translations[currentLang].validation.fieldRequired);
-                return;
-            }
-
+            
             try {
                 const response = await fetch('/api/login', {
                     method: 'POST',
@@ -22,29 +16,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     window.location.href = '/html/profile.html';
                 } else {
-                    alert(translations[currentLang].loginFail);
+                    alert("Giriş başarısız!");
                 }
-            } catch (error) {
-                console.error('Giriş sırasında hata:', error);
-                alert(translations[currentLang].generalError);
+            } catch (err) {
+                console.error(err);
             }
         });
     }
 
-    // --- SLIDESHOW İŞLEMLERİ ---
+    // Slideshow Başlat
     initSlideshow();
 });
 
-async function startSlideshow() {
+async function initSlideshow() {
     const bg = document.getElementById('slideshow-bg');
     const nameLabel = document.getElementById('museum-name');
-    if (!bg) return;
+    if (!bg || !nameLabel) return;
 
     try {
         const res = await fetch('/api/museum');
         const museums = await res.json();
 
-        if (!museums || museums.length === 0) return;
+        // Veri yoksa alanı temizle ve çık (undefined yazmaz)
+        if (!museums || museums.length === 0) {
+            nameLabel.innerText = "";
+            return;
+        }
 
         let i = 0;
         const update = () => {
@@ -57,10 +54,8 @@ async function startSlideshow() {
         };
 
         update();
-        setInterval(update, 4000); // 4 saniyede bir aksın
+        setInterval(update, 4500);
     } catch (e) {
-        console.log("Slide hatası:", e);
+        console.warn("Slideshow yüklenemedi.");
     }
 }
-
-document.addEventListener('DOMContentLoaded', startSlideshow);
