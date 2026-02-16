@@ -101,8 +101,9 @@ app.post('/api/forgot-password', async (req, res) => {
     }
 });
 
-app.post('/api/reset-password', async (req, res) => {
-    const { token, password } = req.body;
+app.post('/api/reset-password/:token', async (req, res) => {
+    const { token } = req.params;
+    const { password } = req.body; 
 
     try {
         const user = await User.findOne({
@@ -113,15 +114,17 @@ app.post('/api/reset-password', async (req, res) => {
         if (!user) {
             return res.status(400).json({ message: "Sıfırlama linki geçersiz veya süresi dolmuş." });
         }
+
+        // Yeni şifreyi kaydet
         user.password = password; 
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
-        await user.save();
 
-        res.json({ message: "Şifreniz başarıyla güncellendi! Giriş yapabilirsiniz." });
+        await user.save();
+        res.json({ message: "Şifreniz başarıyla güncellendi!" });
     } catch (err) {
         console.error("Şifre sıfırlama hatası:", err);
-        res.status(500).json({ message: "Sunucu hatası oluştu." });
+        res.status(500).json({ message: "Bir hata oluştu." });
     }
 });
 
