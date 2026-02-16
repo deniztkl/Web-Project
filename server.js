@@ -117,8 +117,8 @@ app.get('/index.html', requireLogin, (req, res) => {
 // === API ENDPOINT'LERİ ===
 
 app.post('/api/register', async (req, res) => {
+    const { username, email, password } = req.body;
     try {
-        const { username, password } = req.body;
 
         // --- VALIDATION (KONTROL) KURALLARI ---
 
@@ -146,6 +146,19 @@ app.post('/api/register', async (req, res) => {
             return res.status(409).send('Bu kullanıcı adı zaten var.');
         }
 
+        const existingUser = await User.findOne({ email });
+        if (existingUser) return res.status(400).json({ message: "Bu mail zaten kayıtlı!" });
+
+        const newUser = new User({ 
+            username, 
+            email, 
+            password,
+            visitedMuseums: [], 
+            wishlist: [] 
+        });
+
+        await newUser.save();
+        res.status(201).json({ message: "Kayıt başarılı!" });
         // --- Kullanıcı Kaydı ---
         const user = new User({ username, password });
         await user.save();

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('register-form');
     const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const messageContainer = document.getElementById('message-container');
     const validationRulesContainer = document.querySelector('.validation-rules');
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch('/api/register', { 
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, password }),
+                        body: JSON.stringify({ username, email, password }),
                     });
                     const responseText = await response.text();
                     if (response.ok) {
