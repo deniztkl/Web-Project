@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (isFormValid) {
                 try {
-                    const response = await fetch('/api/register', { 
+                        const response = await fetch('/api/register', { 
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, email, password }),
+                        body: JSON.stringify({ username, email: email.value, password }), 
                     });
                     const responseText = await response.text();
                     if (response.ok) {
