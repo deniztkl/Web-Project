@@ -31,51 +31,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderPage(museum, user) {
-        currentMuseum = museum; 
-        currentUser = user; 
+currentMuseum = museum;
+    currentUser = user;
+    const lang = window.currentLang || 'tr';
 
-        const lang = window.currentLang || 'tr';
-        const museumName = museum[`name_${lang}`] || museum.name;
-        const museumDesc = museum[`description_${lang}`];
-        const museumHistory = museum[`history_${lang}`];
-        const museumExtra = museum[`extra_${lang}`];
+    const museumName = museum[`name_${lang}`] || museum.name;
+    const descriptionTitle = translations[lang].descriptionTitle || (lang === 'tr' ? 'Hakkında' : 'About');
+    const descriptionContent = museum[`description_${lang}`];
 
-        container.innerHTML = '';
-        document.title = museumName;
+    const s1Title = museum[`section1Title_${lang}`];
+    const s1Content = museum[`section1Content_${lang}`];
 
-        const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
-        const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
-        const t = translations[lang] || translations['tr'];
-        
-        const museumHTML = `
-            <div class="banner">
-                <img src="${museum.imageUrl}" alt="${museumName}">
-                <div class="banner-text"><h1>${museumName}</h1></div>
+    const s2Title = museum[`section2Title_${lang}`];
+    const s2Content = museum[`section2Content_${lang}`];
+
+    container.innerHTML = '';
+    document.title = museumName;
+
+    const museumHTML = `
+        <div class="banner">
+            <img src="${museum.imageUrl}" alt="${museumName}">
+            <div class="banner-text"><h1>${museumName}</h1></div>
+        </div>
+        <main>
+            ${createSection(descriptionTitle, descriptionContent)}
+
+            ${createSection(s1Title, s1Content)}
+
+            ${createSection(s2Title, s2Content)}
+
+            <div class="map-container">
+                <iframe id="museum-map" 
+                    src="https://www.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
             </div>
-            <main>
-                ${createSection(t.descriptionTitle || "Hakkında", museumDesc)}
-                ${createSection(t.historyTitle || "Tarihçe", museumHistory)}
-                ${createSection(t.extraInfoTitle || "Ek Bilgiler", museumExtra)}
 
-                <div class="map-container">
-                    <iframe id="museum-map" 
-                        src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
-                </div>
-
-                <div class="action-buttons">
-                    ${!isInWishlist 
-                        ? `<button id="wishlist-btn">${t.addToWishlist}</button>` 
-                        : `<button disabled class="already-added">${t.inWishlist}</button>`}
-                    
-                    ${!isVisited 
-                        ? `<button id="visited-btn">${t.addToVisited}</button>` 
-                        : `<button disabled class="already-added">${t.visited}</button>`}
-                </div>
-            </main>
-        `;
-        container.innerHTML = museumHTML;
+            <div class="action-buttons">
+                ${renderButtons(museum, user, lang)}
+            </div>
+        </main>
+    `;
+    container.innerHTML = museumHTML;
 
         document.getElementById('wishlist-btn')?.addEventListener('click', () => handleAddToList('wishlist'));
         document.getElementById('visited-btn')?.addEventListener('click', () => handleAddToList('visited'));

@@ -8,10 +8,10 @@ const museumSchema = new mongoose.Schema({
   description_en: { type: String, required: true },
   imageUrl: { type: String, required: true },
   
-  history_tr: { type: String }, 
-  history_en: { type: String },
-  extra_tr: { type: String },
-  extra_en: { type: String },
+  section1Title_tr: { type: String },
+  section1Title_en: { type: String },
+  section1Content_tr: { type: String },
+  section1Content_en: { type: String },
 
   location: {
     type: { type: String, default: "Point" },
