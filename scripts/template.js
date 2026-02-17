@@ -17,48 +17,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderPage(museum, user) {
-        currentMuseum = museum; 
-        currentUser = user; 
+function renderPage(museum, user) {
+    currentMuseum = museum; 
+    currentUser = user; 
 
-        const lang = window.currentLang;
-        const museumName = museum[`name_${lang}`] || museum.name;
-        const museumDesc = museum[`description_${lang}`] || museum.description || ""; 
+    const lang = window.currentLang;
+    const museumName = museum[`name_${lang}`] || museum.name;
+    const museumDesc = museum[`description_${lang}`] || museum.description || ""; 
 
-        container.innerHTML = '';
-        document.title = museumName;
+    container.innerHTML = '';
+    document.title = museumName;
 
-        const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
-        const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
+    const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
+    const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
 
-        const museumHTML = `
-            <div class="banner">
-                <img src="${museum.imageUrl}" alt="${museumName}">
-                <div class="banner-text"><h1>${museumName}</h1></div>
+    // Dil dosyandan buton metinlerini alalım
+    const visitedText = translations[lang].visited || (lang === 'tr' ? 'Ziyaret Edilen Listesinde' : 'In Visited List');
+    const wishlistText = translations[lang].inWishlist || (lang === 'tr' ? 'Ziyaret Etmek İstenen Listesinde' : 'In Wishlist');
+
+    const museumHTML = `
+        <div class="banner">
+            <img src="${museum.imageUrl}" alt="${museumName}">
+            <div class="banner-text"><h1>${museumName}</h1></div>
+        </div>
+        <main>
+            <div class="description-section">
+                <u><h2 class="desc-title" data-translate-key="descriptionTitle">${translations[lang].descriptionTitle}</h2></u>
+                <article class="museum-description">
+                    <p>${museumDesc.replace(/\n/g, '<br>')}</p>
+                </article>
             </div>
-            <main>
-                <div class="description-section">
-                    <u><h2 class="desc-title" data-translate-key="descriptionTitle">${translations[lang].descriptionTitle}</h2></u>
-                    <article class="museum-description">
-                        <p>${museumDesc.replace(/\n/g, '<br>')}</p>
-                    </article>
-                </div>
-                <div class="map-container">
-                    <iframe id="museum-map" 
-                        src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
-                </div>
-                <div class="action-buttons">
-                    ${!isInWishlist ? `<button id="wishlist-btn">${translations[lang].addToWishlist}</button>` : `<button disabled>${translations[lang].inWishlist || 'Listede'}</button>`}
-                    ${!isVisited ? `<button id="visited-btn">${translations[lang].addToVisited}</button>` : `<button disabled>${translations[lang].visited || 'Gezildi'}</button>`}
-                </div>
-            </main>
-        `;
-        container.innerHTML = museumHTML;
-        document.getElementById('wishlist-btn')?.addEventListener('click', () => handleAddToList('wishlist'));
-        document.getElementById('visited-btn')?.addEventListener('click', () => handleAddToList('visited'));
-    }
+            <div class="map-container">
+                <iframe id="museum-map" 
+                    src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+            <div class="action-buttons">
+                ${!isInWishlist 
+                    ? `<button id="wishlist-btn">${translations[lang].addToWishlist}</button>` 
+                    : `<button disabled class="already-added">${wishlistText}</button>`}
+                
+                ${!isVisited 
+                    ? `<button id="visited-btn">${translations[lang].addToVisited}</button>` 
+                    : `<button disabled class="already-added">${visitedText}</button>`}
+            </div>
+        </main>
+    `;
+    container.innerHTML = museumHTML;
+
+    document.getElementById('wishlist-btn')?.addEventListener('click', () => handleAddToList('wishlist'));
+    document.getElementById('visited-btn')?.addEventListener('click', () => handleAddToList('visited'));
+}
     
     async function handleAddToList(listName) {
         const lang = window.currentLang;

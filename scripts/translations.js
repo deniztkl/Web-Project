@@ -77,7 +77,9 @@ const translations = {
       "usernameRulesTitle": "Username Rules:",
       "passwordRulesTitle": "Password Rules:",
       "usernameExists": "This username already exists."
-    }
+    },
+    "inWishlist": "In Wishlist",
+    "visited": "Visited",
   },
 
   // Türkçe Metinler
@@ -158,6 +160,9 @@ const translations = {
       "usernameRulesTitle": "Kullanıcı Adı Kuralları:",
       "passwordRulesTitle": "Şifre Kuralları:",
       "usernameExists": "Bu kullanıcı adı zaten var."
-    }
+    },
+
+    "inWishlist": "İstek Listesinde",
+    "visited": "Ziyaret Edildi",
   }
 };
