@@ -13,6 +13,11 @@ const museumSchema = new mongoose.Schema({
   section1Content_tr: { type: String },
   section1Content_en: { type: String },
 
+  section2Title_tr: { type: String },
+  section2Title_en: { type: String },
+  section2Content_tr: { type: String },
+  section2Content_en: { type: String },
+
   location: {
     type: { type: String, default: "Point" },
     coordinates: { type: [Number], required: true }
