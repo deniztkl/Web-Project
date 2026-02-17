@@ -29,6 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     }
+    
+    function renderButtons(museum, user, lang) {
+        const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
+        const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
+        const t = translations[lang];
+
+        const wishlistBtn = !isInWishlist 
+            ? `<button id="wishlist-btn">${t.addToWishlist}</button>` 
+            : `<button disabled class="already-added">${t.inWishlist}</button>`;
+        
+        const visitedBtn = !isVisited 
+            ? `<button id="visited-btn">${t.addToVisited}</button>` 
+            : `<button disabled class="already-added">${t.visited}</button>`;
+
+        return wishlistBtn + visitedBtn;
+    }
 
     function renderPage(museum, user) {
 currentMuseum = museum;
