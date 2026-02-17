@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. KAYIT FORMU İŞLEMLERİ ---
     const registerForm = document.getElementById('register-form');
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const messageContainer = document.getElementById('message-container');
     const validationRulesContainer = document.querySelector('.validation-rules');
+    const usernameTitle = document.querySelector('[data-translate-key="validation.usernameRulesTitle"]')?.parentElement;
+    const passwordTitle = document.querySelector('[data-translate-key="validation.passwordRulesTitle"]')?.parentElement;
 
     const ruleIds = [
         'username-length-rule',
@@ -19,46 +20,44 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            // Sıfırlama
             hideAllRules();
             if (messageContainer) messageContainer.textContent = '';
+            if (usernameTitle) usernameTitle.style.display = 'none';
+            if (passwordTitle) passwordTitle.style.display = 'none';
 
             const username = usernameInput.value.trim();
             const email = emailInput.value.trim();
             const password = passwordInput.value;
 
-            let isFormValid = true;
+            let isUsernameValid = true;
+            let isPasswordValid = true;
 
-            // --- Doğrulama Kontrolleri ---
-            // 1. Kullanıcı adı uzunluğu
             if (username.length < 3 || username.length > 16) {
                 showRule('username-length-rule');
-                isFormValid = false;
+                isUsernameValid = false;
             }
-            // 2. Kullanıcı adı karakterleri (Sadece İngilizce harfler ve rakamlar)
             if (!/^[a-zA-Z0-9]+$/.test(username)) {
                 showRule('username-chars-rule');
-                isFormValid = false;
+                isUsernameValid = false;
             }
-            // 3. Şifre uzunluğu
+
             if (password.length < 8) {
                 showRule('password-length-rule');
-                isFormValid = false;
+                isPasswordValid = false;
             }
-            // 4. Şifre karmaşıklığı
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
             if (!passwordRegex.test(password)) {
                 showRule('password-requirements-rule');
-                isFormValid = false;
+                isPasswordValid = false;
             }
 
-            // Hata varsa kuralları göster ve durdur
-            if (!isFormValid) {
+            if (!isUsernameValid && usernameTitle) usernameTitle.style.display = 'block';
+            if (!isPasswordValid && passwordTitle) passwordTitle.style.display = 'block';
+            if (!isUsernameValid || !isPasswordValid) {
                 if (validationRulesContainer) validationRulesContainer.style.display = 'block';
                 return;
             }
 
-            // --- API İsteği ---
             try {
                 const response = await fetch('/api/register', {
                     method: 'POST',
@@ -70,8 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = './login.html'; 
                 } else {
                     const responseText = await response.text();
-                    if (responseText.includes('zaten var') || responseText.includes('exists')) {
-                        const translatedMessage = translations[window.currentLang]?.validation?.usernameExists || "Bu kullanıcı adı zaten alınmış.";
+                    const lang = window.currentLang || 'tr';
+
+                    if (responseText.includes('zaten var') || responseText.includes('exists') || responseText.includes('kullanımda')) {
+                        const translatedMessage = translations[lang]?.validation?.usernameExists || 
+                            (lang === 'tr' ? "Kullanıcı adı veya e-posta zaten kullanımda." : "Username or email is already in use.");
                         displayServerMessage(translatedMessage, 'error');
                     } else {
                         displayServerMessage(responseText, 'error');
@@ -79,13 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error('Kayıt hatası:', error);
-                const genericErrorMessage = translations[window.currentLang]?.validation?.genericServerError || 'Sunucu hatası.';
+                const lang = window.currentLang || 'tr';
+                const genericErrorMessage = translations[lang]?.validation?.genericServerError || 
+                    (lang === 'tr' ? 'Sunucu hatası oluştu.' : 'A server error occurred.');
                 displayServerMessage(genericErrorMessage, 'error');
             }
         });
     }
 
-    // --- YARDIMCI FONKSİYONLAR ---
     function showRule(ruleId) {
         const ruleElement = document.getElementById(ruleId);
         if (ruleElement) ruleElement.style.display = 'list-item';
@@ -107,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 2. SLIDESHOW İŞLEMLERİ ---
     async function initSlideshow() {
         const currentBg = document.getElementById('slideshow-bg');
         const nextBg = document.getElementById('slideshow-bg-next');
