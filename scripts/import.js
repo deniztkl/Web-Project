@@ -14,7 +14,7 @@ mongoose.connect(MONGO_URI, {
 
 async function importMuseums() {
   try {
-    const dataPath = path.join(__dirname, "../public/data/museums.json");
+    const dataPath = path.join(__dirname, "../data/museums.json");
     const jsonData = fs.readFileSync(dataPath, "utf-8");
     const museums = JSON.parse(jsonData);
 
