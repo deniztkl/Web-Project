@@ -37,6 +37,19 @@
                 
                 <button type="submit" data-translate-key="registerButton">Kayıt Ol</button>
             </form>
+
+            <div class="validation-rules" style="display: none; margin-top: 15px; text-align: left; font-size: 0.9em; background: rgba(0,0,0,0.05); padding: 10px; border-radius: 5px;">
+                <p><strong data-translate-key="validation.usernameRulesTitle">Kullanıcı Adı Kuralları:</strong></p>
+                <ul style="list-style: none; padding-left: 5px; color: #d9534f;">
+                    <li id="username-length-rule" data-translate-key="validation.usernameLength" style="display:none;">3 ila 16 karakter arasında olmalıdır.</li>
+                    <li id="username-chars-rule" data-translate-key="validation.usernameChars" style="display:none;">Sadece İngilizce harfler içerebilir.</li>
+                </ul>
+                <p><strong data-translate-key="validation.passwordRulesTitle">Şifre Kuralları:</strong></p>
+                <ul style="list-style: none; padding-left: 5px; color: #d9534f;">
+                    <li id="password-length-rule" data-translate-key="validation.passwordLength" style="display:none;">En az 8 karakter uzunluğunda olmalıdır.</li>
+                    <li id="password-requirements-rule" data-translate-key="validation.passwordRequirements" style="display:none;">En az bir büyük harf, bir küçük harf, bir rakam ve bir sembol içermelidir.</li>
+                </ul>
+            </div>
         </div>
         <p class="switch-auth-link">
             <span data-translate-key="hasAccount">Zaten bir hesabın var mı?</span> 

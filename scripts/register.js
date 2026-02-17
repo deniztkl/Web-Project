@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. KAYIT FORMU İŞLEMLERİ (Gelişmiş Doğrulama ve API) ---
+    // --- 1. KAYIT FORMU İŞLEMLERİ ---
     const registerForm = document.getElementById('register-form');
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
@@ -19,39 +19,43 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            // Sıfırlama işlemleri
+            // Sıfırlama
             hideAllRules();
             if (messageContainer) messageContainer.textContent = '';
 
-            const username = usernameInput.value;
-            const email = emailInput.value;
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
             const password = passwordInput.value;
 
             let isFormValid = true;
 
-            // --- İstemci Tarafı Doğrulamalar ---
+            // --- Doğrulama Kontrolleri ---
+            // 1. Kullanıcı adı uzunluğu
             if (username.length < 3 || username.length > 16) {
                 showRule('username-length-rule');
                 isFormValid = false;
             }
-            if (!/^[a-zA-Z0-9]+$/.test(username)) { // Sadece harf ve rakam (Eski kodda sadece harfti)
+            // 2. Kullanıcı adı karakterleri (Sadece İngilizce harfler ve rakamlar)
+            if (!/^[a-zA-Z0-9]+$/.test(username)) {
                 showRule('username-chars-rule');
                 isFormValid = false;
             }
-
+            // 3. Şifre uzunluğu
             if (password.length < 8) {
                 showRule('password-length-rule');
                 isFormValid = false;
             }
+            // 4. Şifre karmaşıklığı
             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
             if (!passwordRegex.test(password)) {
                 showRule('password-requirements-rule');
                 isFormValid = false;
             }
 
+            // Hata varsa kuralları göster ve durdur
             if (!isFormValid) {
                 if (validationRulesContainer) validationRulesContainer.style.display = 'block';
-                return; // Form geçerli değilse durdur
+                return;
             }
 
             // --- API İsteği ---
@@ -63,12 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    // Başarılı ise profil veya login sayfasına yönlendir
                     window.location.href = './login.html'; 
                 } else {
                     const responseText = await response.text();
-                    
-                    // Sunucudan gelen özel hata mesajlarını işle
                     if (responseText.includes('zaten var') || responseText.includes('exists')) {
                         const translatedMessage = translations[window.currentLang]?.validation?.usernameExists || "Bu kullanıcı adı zaten alınmış.";
                         displayServerMessage(translatedMessage, 'error');
@@ -77,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             } catch (error) {
-                console.error('Kayıt sırasında ağ hatası:', error);
-                const genericErrorMessage = translations[window.currentLang]?.validation?.genericServerError || 'Sunucuya bağlanırken bir hata oluştu.';
+                console.error('Kayıt hatası:', error);
+                const genericErrorMessage = translations[window.currentLang]?.validation?.genericServerError || 'Sunucu hatası.';
                 displayServerMessage(genericErrorMessage, 'error');
             }
         });
@@ -101,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayServerMessage(message, type = 'error') {
         if (messageContainer) {
             messageContainer.textContent = message;
-            messageContainer.style.color = type === 'error' ? '#d9534f' : '#28a745';
+            messageContainer.style.color = type === 'error' ? '#ff4d4d' : '#28a745';
             messageContainer.style.display = 'block';
         }
     }
 
-    // --- 2. SLIDESHOW İŞLEMLERİ (Aynı Kaldı) ---
+    // --- 2. SLIDESHOW İŞLEMLERİ ---
     async function initSlideshow() {
         const currentBg = document.getElementById('slideshow-bg');
         const nextBg = document.getElementById('slideshow-bg-next');
@@ -115,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch('/api/museum');
             let museums = await res.json();
-            
             if (!museums || museums.length === 0) return;
 
             museums = [...museums].sort(() => Math.random() - 0.5);
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             setInterval(update, 5000);
         } catch (e) {
-            console.warn("Slideshow akış hatası:", e);
+            console.warn("Slideshow hatası:", e);
         }
     }
 
