@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMuseum = null;
     let currentUser = null;
     let isUserLoggedIn = false; 
+
     const profileLink = document.getElementById('profile-link');
     if (profileLink) {
         profileLink.addEventListener('click', (e) => {
@@ -17,63 +18,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-function renderPage(museum, user) {
-    currentMuseum = museum; 
-    currentUser = user; 
-
-    const lang = window.currentLang;
-    const museumName = museum[`name_${lang}`] || museum.name;
-    const museumDesc = museum[`description_${lang}`] || museum.description || ""; 
-
-    container.innerHTML = '';
-    document.title = museumName;
-
-    const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
-    const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
-
-    // Dil dosyandan buton metinlerini alalım
-    const visitedText = translations[lang].visited || (lang === 'tr' ? 'Ziyaret Edilen Listesinde' : 'In Visited List');
-    const wishlistText = translations[lang].inWishlist || (lang === 'tr' ? 'Ziyaret Etmek İstenen Listesinde' : 'In Wishlist');
-
-    const museumHTML = `
-        <div class="banner">
-            <img src="${museum.imageUrl}" alt="${museumName}">
-            <div class="banner-text"><h1>${museumName}</h1></div>
-        </div>
-        <main>
+    function createSection(title, content) {
+        if (!content || content.trim() === "") return '';
+        return `
             <div class="description-section">
-                <u><h2 class="desc-title" data-translate-key="descriptionTitle">${translations[lang].descriptionTitle}</h2></u>
+                <u><h2 class="desc-title">${title}</h2></u>
                 <article class="museum-description">
-                    <p>${museumDesc.replace(/\n/g, '<br>')}</p>
+                    <p>${content.replace(/\n/g, '<br>')}</p>
                 </article>
             </div>
-            <div class="map-container">
-                <iframe id="museum-map" 
-                    src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-                </iframe>
-            </div>
-            <div class="action-buttons">
-                ${!isInWishlist 
-                    ? `<button id="wishlist-btn">${translations[lang].addToWishlist}</button>` 
-                    : `<button disabled class="already-added">${wishlistText}</button>`}
-                
-                ${!isVisited 
-                    ? `<button id="visited-btn">${translations[lang].addToVisited}</button>` 
-                    : `<button disabled class="already-added">${visitedText}</button>`}
-            </div>
-        </main>
-    `;
-    container.innerHTML = museumHTML;
+        `;
+    }
 
-    document.getElementById('wishlist-btn')?.addEventListener('click', () => handleAddToList('wishlist'));
-    document.getElementById('visited-btn')?.addEventListener('click', () => handleAddToList('visited'));
-}
-    
+    function renderPage(museum, user) {
+        currentMuseum = museum; 
+        currentUser = user; 
+
+        const lang = window.currentLang || 'tr';
+        const museumName = museum[`name_${lang}`] || museum.name;
+        const museumDesc = museum[`description_${lang}`];
+        const museumHistory = museum[`history_${lang}`];
+        const museumExtra = museum[`extra_${lang}`];
+
+        container.innerHTML = '';
+        document.title = museumName;
+
+        const isVisited = user.visitedMuseums ? user.visitedMuseums.includes(museum.id) : false;
+        const isInWishlist = user.wishlist ? user.wishlist.includes(museum.id) : false;
+        const t = translations[lang] || translations['tr'];
+        
+        const museumHTML = `
+            <div class="banner">
+                <img src="${museum.imageUrl}" alt="${museumName}">
+                <div class="banner-text"><h1>${museumName}</h1></div>
+            </div>
+            <main>
+                ${createSection(t.descriptionTitle || "Hakkında", museumDesc)}
+                ${createSection(t.historyTitle || "Tarihçe", museumHistory)}
+                ${createSection(t.extraInfoTitle || "Ek Bilgiler", museumExtra)}
+
+                <div class="map-container">
+                    <iframe id="museum-map" 
+                        src="https://maps.google.com/maps?q=${museum.location.coordinates[1]},${museum.location.coordinates[0]}&hl=${lang}&z=14&output=embed" 
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+
+                <div class="action-buttons">
+                    ${!isInWishlist 
+                        ? `<button id="wishlist-btn">${t.addToWishlist}</button>` 
+                        : `<button disabled class="already-added">${t.inWishlist}</button>`}
+                    
+                    ${!isVisited 
+                        ? `<button id="visited-btn">${t.addToVisited}</button>` 
+                        : `<button disabled class="already-added">${t.visited}</button>`}
+                </div>
+            </main>
+        `;
+        container.innerHTML = museumHTML;
+
+        document.getElementById('wishlist-btn')?.addEventListener('click', () => handleAddToList('wishlist'));
+        document.getElementById('visited-btn')?.addEventListener('click', () => handleAddToList('visited'));
+    }
+
     async function handleAddToList(listName) {
-        const lang = window.currentLang;
+        const lang = window.currentLang || 'tr';
+        const t = translations[lang];
+
         if (!isUserLoggedIn) {
-            alert(translations[lang].loginRequired || "Bu işlem için giriş yapmalısınız.");
+            alert(t.loginRequired || "Giriş yapmalısınız.");
             window.location.href = '/html/login.html';
             return;
         }
@@ -83,23 +96,23 @@ function renderPage(museum, user) {
         try {
             const response = await fetch(endpoint, { method: 'POST', ...fetchOptions });
             if (response.ok) {
-                const feedbackMessage = listName === 'wishlist'
-                    ? `"${currentMuseum.name}" ${translations[lang].alertAddedToWishlist}`
-                    : `"${currentMuseum.name}" ${translations[lang].alertAddedToVisited}`;
+                const feedback = listName === 'wishlist' 
+                    ? `"${currentMuseum[`name_${lang}`]}" ${t.alertAddedToWishlist}` 
+                    : `"${currentMuseum[`name_${lang}`]}" ${t.alertAddedToVisited}`;
                 
-                alert(feedbackMessage);
+                alert(feedback);
                 window.location.reload(); 
             } else {
-                alert(translations[lang].alertAddFail);
+                alert(t.alertAddFail || "Hata oluştu.");
             }
         } catch (error) {
-            console.error('Listeye eklenirken hata:', error);
+            console.error('Liste hatası:', error);
         }
     }
 
     async function initializePage() {
         if (!museumId) {
-            container.innerHTML = '<h1>Müze ID\'si bulunamadı.</h1>';
+            container.innerHTML = '<h1>Müze ID bulunamadı.</h1>';
             return;
         }
         try {
@@ -108,7 +121,7 @@ function renderPage(museum, user) {
                 fetch('/api/user', fetchOptions).catch(() => ({ ok: false }))
             ]);
 
-            if (!museumRes.ok) throw new Error('Müze verisi alınamadı.');
+            if (!museumRes.ok) throw new Error('Müze bulunamadı.');
             const museum = await museumRes.json();
             
             if (userRes.ok) {
@@ -122,8 +135,7 @@ function renderPage(museum, user) {
             renderPage(museum, currentUser);
 
         } catch (error) {
-            console.error('Detay sayfası yüklenirken hata:', error);
-            container.innerHTML = `<h1>Bir hata oluştu: ${error.message}</h1>`;
+            container.innerHTML = `<h1>Hata: ${error.message}</h1>`;
         }
     }
 

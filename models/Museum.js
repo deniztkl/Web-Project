@@ -5,8 +5,14 @@ const museumSchema = new mongoose.Schema({
   name_tr: { type: String, required: true },
   name_en: { type: String, required: true },
   description_tr: { type: String, required: true },
-  description_en: { type: String, required: true }, 
+  description_en: { type: String, required: true },
   imageUrl: { type: String, required: true },
+  
+  history_tr: { type: String }, 
+  history_en: { type: String },
+  extra_tr: { type: String },
+  extra_en: { type: String },
+
   location: {
     type: { type: String, default: "Point" },
     coordinates: { type: [Number], required: true }

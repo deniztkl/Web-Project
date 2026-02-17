@@ -307,3 +307,7 @@ main ul li {
     background: rgba(44, 82, 130, 0.1);
     border-color: var(--accent-color);
 }
+
+.description-section {
+    margin-bottom: 30px;
+}

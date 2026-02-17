@@ -80,6 +80,9 @@ const translations = {
     },
     "inWishlist": "In Wishlist",
     "visited": "Visited",
+    "descriptionTitle": "About",
+    "historyTitle": "History",
+    "extraInfoTitle": "Visit Notes",
   },
 
   // Türkçe Metinler
@@ -164,5 +167,8 @@ const translations = {
 
     "inWishlist": "İstek Listesinde",
     "visited": "Ziyaret Edildi",
+    "descriptionTitle": "Hakkında",
+    "historyTitle": "Tarihçe",
+    "extraInfoTitle": "Ziyaret Notları",
   }
 };
